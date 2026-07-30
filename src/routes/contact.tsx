@@ -88,7 +88,14 @@ function ContactPage() {
         <ul className="mt-5 space-y-4 text-sm">
           <li className="flex gap-3">
             <MapPin className="mt-0.5 size-4 shrink-0 text-primary" aria-hidden="true" />
-            <span className="text-muted-foreground">Njiro Road, Arusha, Tanzania</span>
+            <a
+              href="https://maps.google.com/?q=Njiro+Road,+Arusha,+Tanzania"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-muted-foreground hover:text-primary"
+            >
+              Njiro Road, Arusha, Tanzania
+            </a>
           </li>
           <li className="flex gap-3">
             <Phone className="mt-0.5 size-4 shrink-0 text-primary" aria-hidden="true" />
