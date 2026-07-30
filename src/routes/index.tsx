@@ -82,6 +82,7 @@ function HomePage() {
         <video
           className="absolute inset-0 size-full object-cover"
           src={heroVideo.url}
+          poster={heroPoster.url}
           autoPlay
           muted
           loop
