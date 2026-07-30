@@ -5,7 +5,8 @@ import { ArrowRight, Check, Droplets, Bug, ShieldCheck, Timer, X } from "lucide-
 import { Button } from "@/components/ui/button";
 import { productsQuery } from "@/lib/catalog-queries";
 import { productImage } from "@/lib/product-images";
-import heroVideo from "@/assets/hero-decking.mp4.asset.json";
+import heroVideo from "@/assets/hero-background.mp4.asset.json";
+import heroPoster from "@/assets/hero-poster.jpg.asset.json";
 import deckingImage from "@/assets/product-decking.jpg";
 import furnitureImage from "@/assets/product-furniture.jpg";
 import lumberImage from "@/assets/product-lumber.jpg";
