@@ -13,9 +13,15 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as CartRouteImport } from './routes/cart'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as CookiePolicyRouteImport } from './routes/cookie-policy'
 import { Route as DonateRouteImport } from './routes/donate'
+import { Route as PaymentSecurityRouteImport } from './routes/payment-security'
+import { Route as PrivacyPolicyRouteImport } from './routes/privacy-policy'
+import { Route as ReturnPolicyRouteImport } from './routes/return-policy'
 import { Route as ShopRouteImport } from './routes/shop'
 import { Route as SuccessRouteImport } from './routes/success'
+import { Route as SustainabilityRouteImport } from './routes/sustainability'
+import { Route as TermsAndConditionsRouteImport } from './routes/terms-and-conditions'
 import { Route as ProductSlugRouteImport } from './routes/product.$slug'
 import { Route as ApiPublicSnippeWebhookRouteImport } from './routes/api/public/snippe-webhook'
 
@@ -39,9 +45,29 @@ const ContactRoute = ContactRouteImport.update({
   path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CookiePolicyRoute = CookiePolicyRouteImport.update({
+  id: '/cookie-policy',
+  path: '/cookie-policy',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const DonateRoute = DonateRouteImport.update({
   id: '/donate',
   path: '/donate',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PaymentSecurityRoute = PaymentSecurityRouteImport.update({
+  id: '/payment-security',
+  path: '/payment-security',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacyPolicyRoute = PrivacyPolicyRouteImport.update({
+  id: '/privacy-policy',
+  path: '/privacy-policy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReturnPolicyRoute = ReturnPolicyRouteImport.update({
+  id: '/return-policy',
+  path: '/return-policy',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ShopRoute = ShopRouteImport.update({
@@ -52,6 +78,16 @@ const ShopRoute = ShopRouteImport.update({
 const SuccessRoute = SuccessRouteImport.update({
   id: '/success',
   path: '/success',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SustainabilityRoute = SustainabilityRouteImport.update({
+  id: '/sustainability',
+  path: '/sustainability',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TermsAndConditionsRoute = TermsAndConditionsRouteImport.update({
+  id: '/terms-and-conditions',
+  path: '/terms-and-conditions',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ProductSlugRoute = ProductSlugRouteImport.update({
@@ -70,9 +106,15 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/cart': typeof CartRoute
   '/contact': typeof ContactRoute
+  '/cookie-policy': typeof CookiePolicyRoute
   '/donate': typeof DonateRoute
+  '/payment-security': typeof PaymentSecurityRoute
+  '/privacy-policy': typeof PrivacyPolicyRoute
+  '/return-policy': typeof ReturnPolicyRoute
   '/shop': typeof ShopRoute
   '/success': typeof SuccessRoute
+  '/sustainability': typeof SustainabilityRoute
+  '/terms-and-conditions': typeof TermsAndConditionsRoute
   '/product/$slug': typeof ProductSlugRoute
   '/api/public/snippe-webhook': typeof ApiPublicSnippeWebhookRoute
 }
@@ -81,9 +123,15 @@ export interface FileRoutesByTo {
   '/about': typeof AboutRoute
   '/cart': typeof CartRoute
   '/contact': typeof ContactRoute
+  '/cookie-policy': typeof CookiePolicyRoute
   '/donate': typeof DonateRoute
+  '/payment-security': typeof PaymentSecurityRoute
+  '/privacy-policy': typeof PrivacyPolicyRoute
+  '/return-policy': typeof ReturnPolicyRoute
   '/shop': typeof ShopRoute
   '/success': typeof SuccessRoute
+  '/sustainability': typeof SustainabilityRoute
+  '/terms-and-conditions': typeof TermsAndConditionsRoute
   '/product/$slug': typeof ProductSlugRoute
   '/api/public/snippe-webhook': typeof ApiPublicSnippeWebhookRoute
 }
@@ -93,9 +141,15 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/cart': typeof CartRoute
   '/contact': typeof ContactRoute
+  '/cookie-policy': typeof CookiePolicyRoute
   '/donate': typeof DonateRoute
+  '/payment-security': typeof PaymentSecurityRoute
+  '/privacy-policy': typeof PrivacyPolicyRoute
+  '/return-policy': typeof ReturnPolicyRoute
   '/shop': typeof ShopRoute
   '/success': typeof SuccessRoute
+  '/sustainability': typeof SustainabilityRoute
+  '/terms-and-conditions': typeof TermsAndConditionsRoute
   '/product/$slug': typeof ProductSlugRoute
   '/api/public/snippe-webhook': typeof ApiPublicSnippeWebhookRoute
 }
@@ -106,9 +160,15 @@ export interface FileRouteTypes {
     | '/about'
     | '/cart'
     | '/contact'
+    | '/cookie-policy'
     | '/donate'
+    | '/payment-security'
+    | '/privacy-policy'
+    | '/return-policy'
     | '/shop'
     | '/success'
+    | '/sustainability'
+    | '/terms-and-conditions'
     | '/product/$slug'
     | '/api/public/snippe-webhook'
   fileRoutesByTo: FileRoutesByTo
@@ -117,9 +177,15 @@ export interface FileRouteTypes {
     | '/about'
     | '/cart'
     | '/contact'
+    | '/cookie-policy'
     | '/donate'
+    | '/payment-security'
+    | '/privacy-policy'
+    | '/return-policy'
     | '/shop'
     | '/success'
+    | '/sustainability'
+    | '/terms-and-conditions'
     | '/product/$slug'
     | '/api/public/snippe-webhook'
   id:
@@ -128,9 +194,15 @@ export interface FileRouteTypes {
     | '/about'
     | '/cart'
     | '/contact'
+    | '/cookie-policy'
     | '/donate'
+    | '/payment-security'
+    | '/privacy-policy'
+    | '/return-policy'
     | '/shop'
     | '/success'
+    | '/sustainability'
+    | '/terms-and-conditions'
     | '/product/$slug'
     | '/api/public/snippe-webhook'
   fileRoutesById: FileRoutesById
@@ -140,9 +212,15 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   CartRoute: typeof CartRoute
   ContactRoute: typeof ContactRoute
+  CookiePolicyRoute: typeof CookiePolicyRoute
   DonateRoute: typeof DonateRoute
+  PaymentSecurityRoute: typeof PaymentSecurityRoute
+  PrivacyPolicyRoute: typeof PrivacyPolicyRoute
+  ReturnPolicyRoute: typeof ReturnPolicyRoute
   ShopRoute: typeof ShopRoute
   SuccessRoute: typeof SuccessRoute
+  SustainabilityRoute: typeof SustainabilityRoute
+  TermsAndConditionsRoute: typeof TermsAndConditionsRoute
   ProductSlugRoute: typeof ProductSlugRoute
   ApiPublicSnippeWebhookRoute: typeof ApiPublicSnippeWebhookRoute
 }
@@ -177,11 +255,39 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ContactRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/cookie-policy': {
+      id: '/cookie-policy'
+      path: '/cookie-policy'
+      fullPath: '/cookie-policy'
+      preLoaderRoute: typeof CookiePolicyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/donate': {
       id: '/donate'
       path: '/donate'
       fullPath: '/donate'
       preLoaderRoute: typeof DonateRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/payment-security': {
+      id: '/payment-security'
+      path: '/payment-security'
+      fullPath: '/payment-security'
+      preLoaderRoute: typeof PaymentSecurityRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacy-policy': {
+      id: '/privacy-policy'
+      path: '/privacy-policy'
+      fullPath: '/privacy-policy'
+      preLoaderRoute: typeof PrivacyPolicyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/return-policy': {
+      id: '/return-policy'
+      path: '/return-policy'
+      fullPath: '/return-policy'
+      preLoaderRoute: typeof ReturnPolicyRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/shop': {
@@ -196,6 +302,20 @@ declare module '@tanstack/react-router' {
       path: '/success'
       fullPath: '/success'
       preLoaderRoute: typeof SuccessRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sustainability': {
+      id: '/sustainability'
+      path: '/sustainability'
+      fullPath: '/sustainability'
+      preLoaderRoute: typeof SustainabilityRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/terms-and-conditions': {
+      id: '/terms-and-conditions'
+      path: '/terms-and-conditions'
+      fullPath: '/terms-and-conditions'
+      preLoaderRoute: typeof TermsAndConditionsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/product/$slug': {
@@ -220,22 +340,18 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   CartRoute: CartRoute,
   ContactRoute: ContactRoute,
+  CookiePolicyRoute: CookiePolicyRoute,
   DonateRoute: DonateRoute,
+  PaymentSecurityRoute: PaymentSecurityRoute,
+  PrivacyPolicyRoute: PrivacyPolicyRoute,
+  ReturnPolicyRoute: ReturnPolicyRoute,
   ShopRoute: ShopRoute,
   SuccessRoute: SuccessRoute,
+  SustainabilityRoute: SustainabilityRoute,
+  TermsAndConditionsRoute: TermsAndConditionsRoute,
   ProductSlugRoute: ProductSlugRoute,
   ApiPublicSnippeWebhookRoute: ApiPublicSnippeWebhookRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}

@@ -88,18 +88,21 @@ function ContactPage() {
         <ul className="mt-5 space-y-4 text-sm">
           <li className="flex gap-3">
             <MapPin className="mt-0.5 size-4 shrink-0 text-primary" aria-hidden="true" />
-            <span className="text-muted-foreground">Dar es Salaam, Tanzania</span>
+            <span className="text-muted-foreground">Njiro Road, Arusha, Tanzania</span>
           </li>
           <li className="flex gap-3">
             <Phone className="mt-0.5 size-4 shrink-0 text-primary" aria-hidden="true" />
-            <a href="tel:+255700000000" className="text-muted-foreground hover:text-primary">
-              +255 700 000 000
+            <a href="tel:+255748576025" className="text-muted-foreground hover:text-primary">
+              (+255) 748 576 025
             </a>
           </li>
           <li className="flex gap-3">
             <Mail className="mt-0.5 size-4 shrink-0 text-primary" aria-hidden="true" />
-            <a href="mailto:hello@greenventure.co.tz" className="text-muted-foreground hover:text-primary">
-              hello@greenventure.co.tz
+            <a
+              href="mailto:greenventuretanzania@gmail.com"
+              className="break-all text-muted-foreground hover:text-primary"
+            >
+              greenventuretanzania@gmail.com
             </a>
           </li>
         </ul>
