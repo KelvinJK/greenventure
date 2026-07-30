@@ -29,7 +29,7 @@ export function SiteFooter() {
             <li className="flex items-start gap-2">
               <MapPin className="mt-0.5 size-4 shrink-0" aria-hidden="true" />
               <a
-                href="https://maps.google.com/?q=Njiro+Road,+Arusha,+Tanzania"
+                href="https://www.google.com/maps/search/?api=1&query=Green%20Venture%20Limited%2C%20Njiro%20Road%2C%20Arusha%2C%20Tanzania"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="transition-colors hover:text-brand-accent"
