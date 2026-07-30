@@ -137,6 +137,7 @@ function RootComponent() {
           </main>
           <SiteFooter />
         </div>
+        <CookieBanner />
         <Toaster />
       </CartProvider>
     </QueryClientProvider>
