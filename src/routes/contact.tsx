@@ -136,5 +136,6 @@ function ContactPage() {
         />
       </div>
     </section>
+    </>
   );
 }
