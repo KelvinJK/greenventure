@@ -12,7 +12,7 @@ export function CookieBanner() {
     try {
       if (!window.localStorage.getItem(STORAGE_KEY)) setVisible(true);
     } catch {
-      /* storage unavailable — stay hidden */
+      /* storage unavailable, stay hidden */
     }
   }, []);
 

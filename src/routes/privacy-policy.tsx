@@ -42,7 +42,7 @@ function PrivacyPolicyPage() {
         <p>
           Payments are processed by our authorised payment partner, Snippe.sh. Card numbers, mobile
           money PINs and other raw payment credentials are entered on the processor's secure
-          checkout — Green Venture Tanzania never sees or stores them. We retain only a payment
+          checkout. Green Venture Tanzania never sees or stores them. We retain only a payment
           reference and the status of your transaction.
         </p>
       </LegalSection>

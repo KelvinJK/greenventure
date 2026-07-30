@@ -44,8 +44,8 @@ function ReturnPolicyPage() {
 
       <LegalSection heading="3. Custom and B2B orders">
         <p>
-          Custom-manufactured items — including lumber cut to bespoke dimensions and project-specific
-          fabrication — are non-refundable unless defective or not to the agreed specification.
+          Custom-manufactured items, including lumber cut to bespoke dimensions and project-specific
+          fabrication, are non-refundable unless defective or not to the agreed specification.
         </p>
       </LegalSection>
 
@@ -62,7 +62,7 @@ function ReturnPolicyPage() {
       <LegalSection heading="5. Refunds">
         <p>
           Approved refunds are returned to the original mobile money or bank account used for
-          payment within 5–10 business days. We do not refund to a different account holder.
+          payment within 5 to 10 business days. We do not refund to a different account holder.
         </p>
       </LegalSection>
 

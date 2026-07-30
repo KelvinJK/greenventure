@@ -57,7 +57,7 @@ export async function startShopCheckout(
   if (lines.length === 0) return { status: "error", message: "Your cart is empty." };
 
   const totalTzs = lines.reduce((sum, line) => sum + line.product.price_tzs * line.quantity, 0);
-  const description = `Green Venture order — ${lines.length} product${lines.length > 1 ? "s" : ""}`;
+  const description = `Green Venture order: ${lines.length} product${lines.length > 1 ? "s" : ""}`;
 
   const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
 
@@ -133,7 +133,7 @@ export async function startDonationCheckout(
     return { status: "error", message: "Please enter a donation of at least TZS 1,000." };
   }
 
-  const description = `Donation — ${tierName}`;
+  const description = `Donation: ${tierName}`;
   const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
 
   const { data: order, error } = await supabaseAdmin

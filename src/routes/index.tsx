@@ -38,7 +38,7 @@ const showcase = [
     alt: "Recycled plastic decking on a lush tropical patio",
     category: "Decking",
     cta: "View Planks",
-    copy: "Solid boards that never splinter, warp or need sealing — laid on hotel terraces, pool surrounds and family courtyards.",
+    copy: "Solid boards that never splinter, warp or need sealing, laid on hotel terraces, pool surrounds and family courtyards.",
   },
   {
     title: "Durable Furniture",
@@ -62,11 +62,11 @@ const benefits = [
   { icon: Timer, title: "50+ Year Lifespan", copy: "Engineered to outlast the structure it supports." },
   { icon: ShieldCheck, title: "Zero Maintenance", copy: "No sealing, staining, oiling or sanding. Ever." },
   { icon: Bug, title: "100% Termite Proof", copy: "Inert plastic offers nothing for termites to eat." },
-  { icon: Droplets, title: "Waterproof", copy: "Non-porous through its full thickness — it cannot rot." },
+  { icon: Droplets, title: "Waterproof", copy: "Non-porous through its full thickness, so it cannot rot." },
 ];
 
 const comparison = [
-  { label: "Lifespan", ours: "50+ years", theirs: "5 – 10 years", oursGood: true },
+  { label: "Lifespan", ours: "50+ years", theirs: "5 to 10 years", oursGood: true },
   { label: "Maintenance", ours: "None", theirs: "Annual sealing", oursGood: true },
   { label: "Weather Resistance", ours: "Rain, sun & salt air", theirs: "Warps and splits", oursGood: true },
   { label: "Environmental Impact", ours: "Removes plastic waste", theirs: "Fells hardwood", oursGood: true },
@@ -103,7 +103,7 @@ function HomePage() {
               Sustainable Outdoor Living, Built to Last 50+ Years
             </h1>
             <p className="mt-6 max-w-2xl text-[clamp(1rem,2.4vw,1.2rem)] leading-relaxed text-charcoal-foreground/85">
-              We transform plastic waste into premium decking, furniture, and fencing — termite-proof,
+              We transform plastic waste into premium decking, furniture, and fencing that is termite-proof,
               weatherproof, and maintenance-free.
             </p>
             <div className="mt-9 flex flex-wrap gap-3">

@@ -84,7 +84,7 @@ function DonatePage() {
       }
       if (result.status === "not_configured") {
         setNotice(
-          `Thank you — your ${formatTzs(result.totalTzs)} pledge is recorded. Mobile money checkout isn't switched on yet; add the Snippe credentials and this button will take you straight to payment.`,
+          `Thank you, your ${formatTzs(result.totalTzs)} pledge is recorded. Mobile money checkout isn't switched on yet; add the Snippe credentials and this button will take you straight to payment.`,
         );
         return;
       }
@@ -124,7 +124,7 @@ function DonatePage() {
           <p className="text-base leading-relaxed text-muted-foreground">
             Across Tanzania, children share broken timber desks that termites and rain destroy within
             a few years. We press collected plastic waste into desks that cannot rot, splinter or be
-            eaten — and we deliver them to the schools that need them most. Each desk keeps roughly
+            eaten, and we deliver them to the schools that need them most. Each desk keeps roughly
             sixty kilograms of plastic out of waterways and landfill, and it will still be in that
             classroom decades from now.
           </p>

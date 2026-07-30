@@ -46,7 +46,7 @@ function AboutPage() {
             <p>
               Today we work with collection cooperatives across Dar es Salaam, Arusha and the Lake
               Zone. Their plastic is washed, shredded, colour-sorted and extruded into solid profiles
-              on our own presses — decking, benches, fence slats, posts and beams that carpenters cut
+              on our own presses: decking, benches, fence slats, posts and beams that carpenters cut
               and fix with the tools they already own.
             </p>
             <p>
@@ -83,7 +83,7 @@ function AboutPage() {
             <p className="mt-4 text-base leading-relaxed text-muted-foreground">
               Coastal salt air, long rains and termites destroy timber structures fast. Our profiles
               are inert, non-porous and colour-through, so they hold up where imported hardwood and
-              painted steel both fail — with no annual maintenance budget.
+              painted steel both fail, with no annual maintenance budget.
             </p>
             <Button asChild className="mt-8 h-11 px-6">
               <Link to="/contact">Talk to our team</Link>

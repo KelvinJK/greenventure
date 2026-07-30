@@ -72,7 +72,7 @@ function ProductPage() {
               <figure key={label} className="overflow-hidden rounded-md border border-border">
                 <img
                   src={image}
-                  alt={`${product.name} — ${label}`}
+                  alt={`${product.name}: ${label}`}
                   loading="lazy"
                   width={600}
                   height={450}

@@ -25,7 +25,7 @@ function PaymentSecurityPage() {
   return (
     <LegalPage
       title="Payment Security & Terms"
-      intro="Green Venture Tanzania is the app owner responsible for this page. It describes how payments are handled today — it is not an independent certification."
+      intro="Green Venture Tanzania is the app owner responsible for this page. It describes how payments are handled today. It is not an independent certification."
     >
       <LegalSection heading="1. Authorised payment processor">
         <p>
@@ -38,7 +38,7 @@ function PaymentSecurityPage() {
       <LegalSection heading="2. What we do not store">
         <p>
           We do not store card numbers, CVV codes, mobile money PINs, or any other raw payment
-          credential — those never touch our systems.
+          credential. Those never touch our systems.
         </p>
       </LegalSection>
 
@@ -55,7 +55,7 @@ function PaymentSecurityPage() {
             "We support M-Pesa, Airtel Money and Halotel through our processor.",
             "The phone number you enter at checkout must match the number paying, or the transaction may be rejected.",
             "Confirm the amount and merchant name on the USSD prompt before entering your PIN.",
-            "Never share your PIN with anyone — no member of our team will ever ask for it.",
+            "Never share your PIN with anyone. No member of our team will ever ask for it.",
           ]}
         />
       </LegalSection>
