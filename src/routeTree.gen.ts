@@ -10,11 +10,29 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as CartRouteImport } from './routes/cart'
+import { Route as ShopRouteImport } from './routes/shop'
+import { Route as ProductSlugRouteImport } from './routes/product.$slug'
 import { Route as ApiPublicSnippeWebhookRouteImport } from './routes/api/public/snippe-webhook'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CartRoute = CartRouteImport.update({
+  id: '/cart',
+  path: '/cart',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ShopRoute = ShopRouteImport.update({
+  id: '/shop',
+  path: '/shop',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProductSlugRoute = ProductSlugRouteImport.update({
+  id: '/product/$slug',
+  path: '/product/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ApiPublicSnippeWebhookRoute = ApiPublicSnippeWebhookRouteImport.update({
@@ -25,27 +43,46 @@ const ApiPublicSnippeWebhookRoute = ApiPublicSnippeWebhookRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/cart': typeof CartRoute
+  '/shop': typeof ShopRoute
+  '/product/$slug': typeof ProductSlugRoute
   '/api/public/snippe-webhook': typeof ApiPublicSnippeWebhookRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/cart': typeof CartRoute
+  '/shop': typeof ShopRoute
+  '/product/$slug': typeof ProductSlugRoute
   '/api/public/snippe-webhook': typeof ApiPublicSnippeWebhookRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/cart': typeof CartRoute
+  '/shop': typeof ShopRoute
+  '/product/$slug': typeof ProductSlugRoute
   '/api/public/snippe-webhook': typeof ApiPublicSnippeWebhookRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/api/public/snippe-webhook'
+  fullPaths:
+    '/' | '/cart' | '/shop' | '/product/$slug' | '/api/public/snippe-webhook'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/api/public/snippe-webhook'
-  id: '__root__' | '/' | '/api/public/snippe-webhook'
+  to: '/' | '/cart' | '/shop' | '/product/$slug' | '/api/public/snippe-webhook'
+  id:
+    | '__root__'
+    | '/'
+    | '/cart'
+    | '/shop'
+    | '/product/$slug'
+    | '/api/public/snippe-webhook'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  CartRoute: typeof CartRoute
+  ShopRoute: typeof ShopRoute
+  ProductSlugRoute: typeof ProductSlugRoute
   ApiPublicSnippeWebhookRoute: typeof ApiPublicSnippeWebhookRoute
 }
 
@@ -56,6 +93,27 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cart': {
+      id: '/cart'
+      path: '/cart'
+      fullPath: '/cart'
+      preLoaderRoute: typeof CartRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/shop': {
+      id: '/shop'
+      path: '/shop'
+      fullPath: '/shop'
+      preLoaderRoute: typeof ShopRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/product/$slug': {
+      id: '/product/$slug'
+      path: '/product/$slug'
+      fullPath: '/product/$slug'
+      preLoaderRoute: typeof ProductSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/api/public/snippe-webhook': {
@@ -70,6 +128,9 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  CartRoute: CartRoute,
+  ShopRoute: ShopRoute,
+  ProductSlugRoute: ProductSlugRoute,
   ApiPublicSnippeWebhookRoute: ApiPublicSnippeWebhookRoute,
 }
 export const routeTree = rootRouteImport
