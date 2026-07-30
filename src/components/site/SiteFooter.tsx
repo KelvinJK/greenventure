@@ -28,7 +28,14 @@ export function SiteFooter() {
           <ul className="mt-5 space-y-3 text-sm text-charcoal-foreground/70">
             <li className="flex items-start gap-2">
               <MapPin className="mt-0.5 size-4 shrink-0" aria-hidden="true" />
-              <span>Njiro Road, Arusha, Tanzania</span>
+              <a
+                href="https://maps.google.com/?q=Njiro+Road,+Arusha,+Tanzania"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="transition-colors hover:text-brand-accent"
+              >
+                Njiro Road, Arusha, Tanzania
+              </a>
             </li>
             <li className="flex items-start gap-2">
               <Phone className="mt-0.5 size-4 shrink-0" aria-hidden="true" />
