@@ -31,6 +31,7 @@ function ContactPage() {
   const [sent, setSent] = useState(false);
 
   return (
+    <>
     <div className="mx-auto grid w-full max-w-7xl gap-14 px-4 py-16 sm:px-6 lg:grid-cols-[1fr_20rem] lg:px-8 lg:py-24">
       <div>
         <h1 className="font-display text-[clamp(1.85rem,4.5vw,3rem)] leading-tight">
