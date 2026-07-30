@@ -1,10 +1,10 @@
 import { Link } from "@tanstack/react-router";
-import { Facebook, Instagram, Mail, MapPin, Phone, Recycle, Twitter } from "lucide-react";
+import { Facebook, Instagram, Linkedin, Mail, MapPin, Phone, Recycle } from "lucide-react";
 
 const socials = [
-  { label: "Twitter", href: "https://twitter.com/", Icon: Twitter },
-  { label: "Facebook", href: "https://facebook.com/", Icon: Facebook },
-  { label: "Instagram", href: "https://instagram.com/", Icon: Instagram },
+  { label: "LinkedIn", href: "https://www.linkedin.com/company/green-venture-tanzania/", Icon: Linkedin },
+  { label: "Facebook", href: "https://web.facebook.com/greenventuretanzania", Icon: Facebook },
+  { label: "Instagram", href: "https://www.instagram.com/green_venture_tanzania/", Icon: Instagram },
 ];
 
 export function SiteFooter() {
