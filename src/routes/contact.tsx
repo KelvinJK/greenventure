@@ -46,7 +46,7 @@ function ContactPage() {
           onSubmit={(event) => {
             event.preventDefault();
             setSent(true);
-            toast.success("Thanks — we'll be in touch within one working day.");
+            toast.success("Thanks, we'll be in touch within one working day.");
           }}
         >
           <div className="grid gap-5 sm:grid-cols-2">
@@ -107,7 +107,7 @@ function ContactPage() {
           </li>
         </ul>
         <p className="mt-6 text-xs leading-relaxed text-muted-foreground">
-          Bulk and tender enquiries are answered within one working day, Mon – Sat, 8:00 – 18:00 EAT.
+          Bulk and tender enquiries are answered within one working day, Mon to Sat, 8:00 to 18:00 EAT.
         </p>
       </aside>
     </div>

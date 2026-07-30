@@ -15,9 +15,8 @@ import { productImage } from "@/lib/product-images";
 const categories = ["Decking", "Furniture", "Fencing", "Lumber"] as const;
 
 export const Route = createFileRoute("/shop")({
-  validateSearch: (search: Record<string, unknown>) => ({
-    category: typeof search.category === "string" ? search.category : undefined,
-  }),
+  validateSearch: (search: Record<string, unknown>): { category?: string } =>
+    typeof search.category === "string" ? { category: search.category } : {},
   head: () => ({
     meta: [
       { title: "Shop Recycled Plastic Decking, Furniture & Lumber | Green Venture" },
