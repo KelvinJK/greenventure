@@ -118,5 +118,22 @@ function ContactPage() {
         </p>
       </aside>
     </div>
+
+    <section className="mx-auto w-full max-w-7xl px-4 pb-16 sm:px-6 lg:px-8 lg:pb-24">
+      <h2 className="font-display text-xl">Find us on the map</h2>
+      <div className="mt-5 overflow-hidden rounded-lg border border-border shadow-sm">
+        <iframe
+          title="Green Venture Limited location map"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4465.067639512589!2d36.702333575481795!3d-3.4042227416100395!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x183705c1e74a1519%3A0xbef03e52de12e3dd!2sGreen%20Venture%20Limited!5e1!3m2!1sen!2stz!4v1785453308829!5m2!1sen!2stz"
+          width="100%"
+          height="380"
+          style={{ border: 0 }}
+          allowFullScreen
+          loading="lazy"
+          referrerPolicy="strict-origin-when-cross-origin"
+          className="block h-[260px] w-full sm:h-[340px] lg:h-[380px]"
+        />
+      </div>
+    </section>
   );
 }
