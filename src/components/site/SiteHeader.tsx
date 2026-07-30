@@ -1,7 +1,8 @@
 import { Link } from "@tanstack/react-router";
-import { Menu, Recycle, ShoppingCart } from "lucide-react";
+import { Menu, ShoppingCart } from "lucide-react";
 import { useState } from "react";
 
+import logoAsset from "@/assets/green-venture-logo.webp.asset.json";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { useCart } from "@/context/CartContext";
@@ -21,9 +22,14 @@ export function SiteHeader() {
     <header className="sticky top-0 z-50 border-b border-border/60 bg-background/90 backdrop-blur">
       <div className="mx-auto flex h-16 w-full max-w-7xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
         <Link to="/" className="flex min-h-11 items-center gap-2" aria-label="Green Venture Tanzania home">
-          <span className="flex size-9 items-center justify-center rounded-md bg-primary text-primary-foreground">
-            <Recycle className="size-5" aria-hidden="true" />
-          </span>
+          <img
+            src={logoAsset.url}
+            alt="Green Venture Tanzania logo"
+            width={40}
+            height={40}
+            className="size-10 shrink-0 object-contain"
+          />
+
           <span className="font-display text-base leading-tight font-bold tracking-tight">
             Green Venture
             <span className="block text-[0.65rem] font-semibold tracking-[0.18em] text-muted-foreground uppercase">

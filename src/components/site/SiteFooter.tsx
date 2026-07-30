@@ -1,5 +1,7 @@
 import { Link } from "@tanstack/react-router";
-import { Facebook, Instagram, Linkedin, Mail, MapPin, Phone, Recycle } from "lucide-react";
+import { Facebook, Instagram, Linkedin, Mail, MapPin, Phone } from "lucide-react";
+
+import logoAsset from "@/assets/green-venture-logo.webp.asset.json";
 
 const socials = [
   { label: "LinkedIn", href: "https://www.linkedin.com/company/green-venture-tanzania/", Icon: Linkedin },
@@ -13,9 +15,13 @@ export function SiteFooter() {
       <div className="mx-auto grid w-full max-w-7xl gap-10 px-4 py-14 sm:grid-cols-2 sm:px-6 lg:grid-cols-[1.4fr_1fr_1fr_1fr] lg:px-8">
         <div>
           <div className="flex min-w-0 items-center gap-2">
-            <span className="flex size-9 shrink-0 items-center justify-center rounded-md bg-brand-accent text-brand-accent-foreground">
-              <Recycle className="size-5" aria-hidden="true" />
-            </span>
+            <img
+              src={logoAsset.url}
+              alt="Green Venture Tanzania logo"
+              width={44}
+              height={44}
+              className="size-11 shrink-0 rounded-md bg-white object-contain p-1"
+            />
             <span className="font-display text-lg font-bold">Green Venture Tanzania</span>
           </div>
 
