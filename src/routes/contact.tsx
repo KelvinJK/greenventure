@@ -89,7 +89,7 @@ function ContactPage() {
           <li className="flex gap-3">
             <MapPin className="mt-0.5 size-4 shrink-0 text-primary" aria-hidden="true" />
             <a
-              href="https://maps.google.com/?q=Njiro+Road,+Arusha,+Tanzania"
+              href="https://www.google.com/maps/place/Green+Venture+Limited/@-3.4042227,36.7023336,17z"
               target="_blank"
               rel="noopener noreferrer"
               className="text-muted-foreground hover:text-primary"
