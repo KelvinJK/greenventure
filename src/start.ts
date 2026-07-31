@@ -1,7 +1,23 @@
 import { createStart, createCsrfMiddleware, createMiddleware } from "@tanstack/react-start";
 
 import { renderErrorPage } from "./lib/error-page";
-import { attachSupabaseAuth } from "@/integrations/supabase/auth-attacher";
+import { supabase } from "@/integrations/supabase/client";
+
+// Local replacement for the generated `attachSupabaseAuth`: no server function in
+// this app uses `requireSupabaseAuth` (the catalogue is public), so a missing or
+// misconfigured browser Supabase client must never break public serverFn calls.
+const attachSupabaseAuthSafe = createMiddleware({ type: "function" }).client(
+  async ({ next }) => {
+    try {
+      const { data } = await supabase.auth.getSession();
+      const token = data.session?.access_token;
+      if (token) return next({ headers: { Authorization: `Bearer ${token}` } });
+    } catch {
+      // Supabase not configured in this environment; continue unauthenticated.
+    }
+    return next();
+  },
+);
 
 const errorMiddleware = createMiddleware().server(async ({ next }) => {
   try {
@@ -26,6 +42,6 @@ const csrfMiddleware = createCsrfMiddleware({
 });
 
 export const startInstance = createStart(() => ({
-  functionMiddleware: [attachSupabaseAuth],
+  functionMiddleware: [attachSupabaseAuthSafe],
   requestMiddleware: [errorMiddleware, csrfMiddleware],
 }));
