@@ -9,6 +9,7 @@ import { useCart } from "@/context/CartContext";
 import { formatTzs } from "@/lib/format";
 import { productQuery, type Product } from "@/lib/catalog-queries";
 import { productImage } from "@/lib/product-images";
+import { CoverageCalculator } from "@/components/site/CoverageCalculator";
 
 export const Route = createFileRoute("/product/$slug")({
   loader: async ({ context, params }) => {
@@ -155,6 +156,8 @@ function ProductPage() {
           >
             Request Custom Quote for bulk orders
           </Link>
+
+          {product.category !== "Furniture" && <CoverageCalculator product={product} />}
         </div>
       </div>
     </div>
