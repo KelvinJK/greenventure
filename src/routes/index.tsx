@@ -7,9 +7,9 @@ import { productsQuery } from "@/lib/catalog-queries";
 import { productImage } from "@/lib/product-images";
 import heroVideo from "@/assets/hero-background-v2.mp4.asset.json";
 import heroPoster from "@/assets/hero-poster-v2.jpg.asset.json";
-import deckingImage from "@/assets/product-decking.jpg";
-import furnitureImage from "@/assets/product-furniture.jpg";
-import lumberImage from "@/assets/product-lumber.jpg";
+import deckingShowcase from "@/assets/showcase-decking.jpg.asset.json";
+import furnitureShowcase from "@/assets/showcase-furniture.jpg.asset.json";
+import lumberShowcase from "@/assets/showcase-lumber.jpg.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -35,24 +35,24 @@ export const Route = createFileRoute("/")({
 const showcase = [
   {
     title: "Weatherproof Decking",
-    image: deckingImage,
-    alt: "Recycled plastic decking on a lush tropical patio",
+    image: deckingShowcase.url,
+    alt: "Charcoal recycled plastic decking boards on a tropical terrace",
     category: "Decking",
     cta: "View Planks",
     copy: "Solid boards that never splinter, warp or need sealing, laid on hotel terraces, pool surrounds and family courtyards.",
   },
   {
     title: "Durable Furniture",
-    image: furnitureImage,
-    alt: "Recycled plastic park bench in a green park",
+    image: furnitureShowcase.url,
+    alt: "Recycled plastic lumber picnic table and benches on a lawn",
     category: "Furniture",
     cta: "View Furniture",
     copy: "Benches and tables specified by municipalities and lodges that are done replacing timber every other season.",
   },
   {
     title: "Structural Lumber",
-    image: lumberImage,
-    alt: "Stacked recycled plastic structural posts and beams",
+    image: lumberShowcase.url,
+    alt: "Stacked recycled plastic structural posts and beams in a yard",
     category: "Lumber",
     cta: "View Lumber",
     copy: "Posts and beams you can set straight into wet ground, cut and fix with the tools your carpenters already own.",
