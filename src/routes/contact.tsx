@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
+import { useSuspenseQuery } from "@tanstack/react-query";
 import { useServerFn } from "@tanstack/react-start";
 import { Mail, MapPin, Phone } from "lucide-react";
 import { toast } from "sonner";
@@ -9,6 +10,9 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { submitQuoteRequest } from "@/lib/quote.functions";
+import { PhoneField } from "@/components/site/PhoneField";
+import { QuoteEstimator } from "@/components/site/QuoteEstimator";
+import { productsQuery, type Product } from "@/lib/catalog-queries";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -26,6 +30,7 @@ export const Route = createFileRoute("/contact")({
       },
     ],
   }),
+  loader: ({ context }) => context.queryClient.ensureQueryData(productsQuery),
   component: ContactPage,
 });
 
@@ -33,6 +38,19 @@ function ContactPage() {
   const [sent, setSent] = useState(false);
   const [sending, setSending] = useState(false);
   const sendQuote = useServerFn(submitQuoteRequest);
+  const [message, setMessage] = useState("");
+  const { data } = useSuspenseQuery(productsQuery);
+  const products = data as Product[];
+
+  function applyEstimate(summary: string) {
+    setMessage((current) => {
+      const body = current.trim();
+      const next = body ? `${body}\n\n${summary}` : summary;
+      return next.slice(0, 4000);
+    });
+    document.getElementById("contact-message")?.scrollIntoView({ behavior: "smooth", block: "center" });
+    toast.success("Estimate added to your request. Add any extra details and send it.");
+  }
 
   return (
     <>
@@ -45,6 +63,10 @@ function ContactPage() {
           Tell us the project, the rough quantities and where it is. We price in Tanzanian shillings,
           including delivery, and we can cut profiles to length before dispatch.
         </p>
+
+        <div className="max-w-2xl">
+          <QuoteEstimator products={products} onUseEstimate={applyEstimate} />
+        </div>
 
         <form
           className="mt-10 max-w-2xl space-y-5"
@@ -65,6 +87,7 @@ function ContactPage() {
               });
               setSent(true);
               form.reset();
+              setMessage("");
               toast.success("Thanks, we'll be in touch within one working day.");
             } catch {
               toast.error("We couldn't send that. Please call or email us directly.");
@@ -92,16 +115,7 @@ function ContactPage() {
                 className="mt-1.5 h-11"
               />
             </div>
-            <div>
-              <Label htmlFor="contact-phone">Phone</Label>
-              <Input
-                id="contact-phone"
-                name="phone"
-                type="tel"
-                inputMode="tel"
-                className="mt-1.5 h-11"
-              />
-            </div>
+            <PhoneField />
           </div>
           <div>
             <Label htmlFor="contact-message">Project details</Label>
@@ -109,7 +123,9 @@ function ContactPage() {
               id="contact-message"
               name="message"
               required
-              rows={6}
+              rows={8}
+              value={message}
+              onChange={(event) => setMessage(event.target.value)}
               className="mt-1.5"
               placeholder="e.g. 120 m² of decking for a lodge terrace in Bagamoyo, needed in October."
             />
