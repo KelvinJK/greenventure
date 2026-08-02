@@ -92,8 +92,8 @@ export function SiteHeader() {
                   </Link>
                 ))}
                 <Button asChild className="mt-4 mx-2 h-12">
-                  <Link to="/portfolio" onClick={() => setOpen(false)}>
-                    Portfolio
+                  <Link to="/contact" onClick={() => setOpen(false)}>
+                    Get a Quote
                   </Link>
                 </Button>
               </nav>
