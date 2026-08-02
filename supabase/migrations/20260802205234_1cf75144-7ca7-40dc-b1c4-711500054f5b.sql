@@ -1,0 +1,2 @@
+UPDATE public.products SET image_key = 'furniture-heritage-bench' WHERE slug = 'heritage-park-bench';
+UPDATE public.products SET image_key = 'furniture-courtyard-table' WHERE slug = 'courtyard-dining-table';
