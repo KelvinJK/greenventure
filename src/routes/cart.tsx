@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useCart } from "@/context/CartContext";
-import { formatTzs } from "@/lib/format";
+import { formatQuantity, formatTzs, isPerMetre, snapMetres } from "@/lib/format";
 import { productImage } from "@/lib/product-images";
 import { createShopCheckoutSession } from "@/lib/checkout.functions";
 
@@ -81,7 +81,12 @@ function CartPage() {
       ) : (
         <div className="mt-10 grid gap-10 lg:grid-cols-[1fr_22rem]">
           <ul className="space-y-4">
-            {lines.map((line) => (
+            {lines.map((line) => {
+              const perMetre = isPerMetre(line.unit);
+              const step = perMetre ? 0.5 : 1;
+              const adjust = (next: number) =>
+                setQuantity(line.slug, perMetre ? snapMetres(next, 0) : Math.round(next));
+              return (
               <li
                 key={line.slug}
                 className="flex flex-col gap-4 rounded-lg border border-border bg-card p-4 sm:flex-row sm:items-center"
@@ -111,17 +116,19 @@ function CartPage() {
                       size="icon"
                       className="size-11"
                       aria-label={`Decrease ${line.name}`}
-                      onClick={() => setQuantity(line.slug, line.quantity - 1)}
+                      onClick={() => adjust(line.quantity - step)}
                     >
                       <Minus className="size-4" aria-hidden="true" />
                     </Button>
-                    <span className="w-10 text-center text-sm font-semibold">{line.quantity}</span>
+                    <span className="w-14 text-center text-sm font-semibold">
+                      {formatQuantity(line.quantity, line.unit)}
+                    </span>
                     <Button
                       variant="ghost"
                       size="icon"
                       className="size-11"
                       aria-label={`Increase ${line.name}`}
-                      onClick={() => setQuantity(line.slug, line.quantity + 1)}
+                      onClick={() => adjust(line.quantity + step)}
                     >
                       <Plus className="size-4" aria-hidden="true" />
                     </Button>
@@ -140,7 +147,8 @@ function CartPage() {
                   </Button>
                 </div>
               </li>
-            ))}
+              );
+            })}
           </ul>
 
           <aside className="h-fit rounded-lg border border-border bg-card p-6">
