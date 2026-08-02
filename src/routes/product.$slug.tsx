@@ -1,12 +1,13 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { useSuspenseQuery } from "@tanstack/react-query";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Minus, Plus } from "lucide-react";
 import { toast } from "sonner";
 
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import { useCart } from "@/context/CartContext";
-import { formatTzs } from "@/lib/format";
+import { formatQuantity, formatTzs, isPerMetre, snapMetres } from "@/lib/format";
 import { productQuery, type Product } from "@/lib/catalog-queries";
 import { productImage } from "@/lib/product-images";
 import { CoverageCalculator } from "@/components/site/CoverageCalculator";
@@ -42,7 +43,16 @@ function ProductPage() {
   const { data } = useSuspenseQuery(productQuery(slug));
   const product = data as Product;
   const { addLine } = useCart();
-  const [quantity, setQuantity] = useState(1);
+  const perMetre = isPerMetre(product.unit);
+  const step = perMetre ? 0.5 : 1;
+  const clampQuantity = (value: number) =>
+    perMetre ? snapMetres(value) : Math.min(999, Math.max(1, Math.round(value)));
+  const [quantity, setQuantity] = useState(perMetre ? 3 : 1);
+  const [metresText, setMetresText] = useState(perMetre ? "3" : "1");
+
+  useEffect(() => {
+    if (perMetre) setMetresText(String(quantity));
+  }, [perMetre, quantity]);
 
   const image = productImage(product.image_key);
   const paragraphs = product.long_description.split("\n\n").filter(Boolean);
