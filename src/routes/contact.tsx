@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
+import { useServerFn } from "@tanstack/react-start";
 import { Mail, MapPin, Phone } from "lucide-react";
 import { toast } from "sonner";
 
@@ -7,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
+import { submitQuoteRequest } from "@/lib/quote.functions";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -29,6 +31,8 @@ export const Route = createFileRoute("/contact")({
 
 function ContactPage() {
   const [sent, setSent] = useState(false);
+  const [sending, setSending] = useState(false);
+  const sendQuote = useServerFn(submitQuoteRequest);
 
   return (
     <>
@@ -44,44 +48,77 @@ function ContactPage() {
 
         <form
           className="mt-10 max-w-2xl space-y-5"
-          onSubmit={(event) => {
+          onSubmit={async (event) => {
             event.preventDefault();
-            setSent(true);
-            toast.success("Thanks, we'll be in touch within one working day.");
+            const form = event.currentTarget;
+            const values = new FormData(form);
+            setSending(true);
+            try {
+              await sendQuote({
+                data: {
+                  name: String(values.get("name") ?? ""),
+                  company: String(values.get("company") ?? ""),
+                  email: String(values.get("email") ?? ""),
+                  phone: String(values.get("phone") ?? ""),
+                  message: String(values.get("message") ?? ""),
+                },
+              });
+              setSent(true);
+              form.reset();
+              toast.success("Thanks, we'll be in touch within one working day.");
+            } catch {
+              toast.error("We couldn't send that. Please call or email us directly.");
+            } finally {
+              setSending(false);
+            }
           }}
         >
           <div className="grid gap-5 sm:grid-cols-2">
             <div>
               <Label htmlFor="contact-name">Name</Label>
-              <Input id="contact-name" required className="mt-1.5 h-11" />
+              <Input id="contact-name" name="name" required className="mt-1.5 h-11" />
             </div>
             <div>
               <Label htmlFor="contact-company">Company (optional)</Label>
-              <Input id="contact-company" className="mt-1.5 h-11" />
+              <Input id="contact-company" name="company" className="mt-1.5 h-11" />
             </div>
             <div>
               <Label htmlFor="contact-email">Email</Label>
-              <Input id="contact-email" type="email" required className="mt-1.5 h-11" />
+              <Input
+                id="contact-email"
+                name="email"
+                type="email"
+                required
+                className="mt-1.5 h-11"
+              />
             </div>
             <div>
               <Label htmlFor="contact-phone">Phone</Label>
-              <Input id="contact-phone" type="tel" inputMode="tel" className="mt-1.5 h-11" />
+              <Input
+                id="contact-phone"
+                name="phone"
+                type="tel"
+                inputMode="tel"
+                className="mt-1.5 h-11"
+              />
             </div>
           </div>
           <div>
             <Label htmlFor="contact-message">Project details</Label>
             <Textarea
               id="contact-message"
+              name="message"
               required
               rows={6}
               className="mt-1.5"
               placeholder="e.g. 120 m² of decking for a lodge terrace in Bagamoyo, needed in October."
             />
           </div>
-          <Button type="submit" className="h-12 px-7 text-base">
-            {sent ? "Request sent" : "Request my quote"}
+          <Button type="submit" disabled={sending} className="h-12 px-7 text-base">
+            {sending ? "Sending..." : sent ? "Request sent" : "Request my quote"}
           </Button>
         </form>
+
       </div>
 
       <aside className="h-fit rounded-lg border border-border bg-offwhite p-6">
