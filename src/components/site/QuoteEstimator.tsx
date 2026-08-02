@@ -133,6 +133,24 @@ export function QuoteEstimator({
     return lines.join("\n");
   }
 
+  function handleDownload() {
+    if (!selected || !result) return;
+    downloadQuotePdf({
+      application: app.label,
+      material: selected.name,
+      profile: `${result.profile.widthMm} mm x ${result.profile.thicknessMm} mm, 3 m lengths`,
+      basis: linear
+        ? `${result.run.toFixed(2)} m running length`
+        : `${result.baseArea.toFixed(2)} m2${mode === "dimensions" ? ` (${toNumber(width)} m x ${toNumber(height)} m)` : ""}, ${Math.max(0, toNumber(gapMm))} mm board gap`,
+      allowance: `${Math.min(50, Math.max(0, toNumber(wastePct)))}%`,
+      pieces: result.pieces,
+      metres: result.metres,
+      unitPrice: `${formatTzs(selected.price_tzs)} ${selected.unit}`,
+      billed: `${result.billed} ${result.perMetre ? "m" : "pcs"}`,
+      estimate: formatTzs(result.estimate),
+    });
+  }
+
   return (
     <section className="mt-10 rounded-lg border border-border bg-muted/40 p-5 sm:p-6">
       <header className="flex items-start gap-3">
