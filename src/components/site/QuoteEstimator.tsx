@@ -343,14 +343,20 @@ export function QuoteEstimator({
             </div>
           </dl>
 
-          <Button
-            type="button"
-            variant="outline"
-            className="mt-5 h-11 w-full"
-            onClick={() => onUseEstimate(summary())}
-          >
-            Add this estimate to my request
-          </Button>
+          <div className="mt-5 grid gap-3 sm:grid-cols-2">
+            <Button
+              type="button"
+              variant="outline"
+              className="h-11 w-full"
+              onClick={() => onUseEstimate(summary())}
+            >
+              Add this estimate to my request
+            </Button>
+            <Button type="button" variant="secondary" className="h-11 w-full" onClick={handleDownload}>
+              <FileDown className="size-4" aria-hidden="true" />
+              Download quote PDF
+            </Button>
+          </div>
           <p className="mt-3 text-xs leading-relaxed text-muted-foreground">
             Indicative only. Delivery, fixings, joists and site conditions are priced in the final quote.
           </p>
