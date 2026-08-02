@@ -10,6 +10,7 @@ import { useCart } from "@/context/CartContext";
 const navLinks: { to: string; label: string; exact?: boolean }[] = [
   { to: "/", label: "Home", exact: true },
   { to: "/shop", label: "Shop" },
+  { to: "/portfolio", label: "Portfolio" },
   { to: "/about", label: "About" },
   { to: "/donate", label: "Donate" },
   { to: "/contact", label: "Contact" },
