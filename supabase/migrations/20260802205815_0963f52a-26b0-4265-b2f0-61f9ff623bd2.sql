@@ -1,0 +1,1 @@
+UPDATE public.products SET image_key = 'decking-boardwalk-jetty' WHERE slug = 'boardwalk-jetty-plank';
