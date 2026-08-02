@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import { Calculator } from "lucide-react";
+import { Calculator, FileDown } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -13,6 +13,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { formatTzs, isPerMetre } from "@/lib/format";
+import { downloadQuotePdf } from "@/lib/quote-pdf";
 import type { Product } from "@/lib/catalog-queries";
 
 const BOARD_LENGTH_M = 3;
