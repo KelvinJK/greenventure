@@ -7,12 +7,13 @@ import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { useCart } from "@/context/CartContext";
 
-const navLinks = [
+const navLinks: { to: string; label: string; exact?: boolean }[] = [
+  { to: "/", label: "Home", exact: true },
   { to: "/shop", label: "Shop" },
   { to: "/about", label: "About" },
   { to: "/donate", label: "Donate" },
   { to: "/contact", label: "Contact" },
-] as const;
+];
 
 export function SiteHeader() {
   const { itemCount } = useCart();
@@ -45,6 +46,7 @@ export function SiteHeader() {
               to={link.to}
               className="text-sm font-semibold text-foreground/75 transition-colors hover:text-primary"
               activeProps={{ className: "text-primary" }}
+              activeOptions={{ exact: link.exact ?? false }}
             >
               {link.label}
             </Link>
@@ -83,6 +85,7 @@ export function SiteHeader() {
                     onClick={() => setOpen(false)}
                     className="flex min-h-12 items-center rounded-md px-4 text-base font-semibold text-foreground/80 transition-colors hover:bg-muted hover:text-primary"
                     activeProps={{ className: "text-primary" }}
+                    activeOptions={{ exact: link.exact ?? false }}
                   >
                     {link.label}
                   </Link>
