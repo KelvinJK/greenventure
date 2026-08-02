@@ -56,7 +56,7 @@ export function SiteHeader() {
 
         <div className="flex items-center gap-2">
           <Button asChild className="hidden h-11 px-5 sm:inline-flex">
-            <Link to="/portfolio">Portfolio</Link>
+            <Link to="/contact">Get a Quote</Link>
           </Button>
 
           <Button asChild variant="ghost" size="icon" className="relative size-11" aria-label="Cart">
