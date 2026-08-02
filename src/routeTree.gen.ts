@@ -16,6 +16,7 @@ import { Route as ContactRouteImport } from './routes/contact'
 import { Route as CookiePolicyRouteImport } from './routes/cookie-policy'
 import { Route as DonateRouteImport } from './routes/donate'
 import { Route as PaymentSecurityRouteImport } from './routes/payment-security'
+import { Route as PortfolioRouteImport } from './routes/portfolio'
 import { Route as PrivacyPolicyRouteImport } from './routes/privacy-policy'
 import { Route as ReturnPolicyRouteImport } from './routes/return-policy'
 import { Route as ShopRouteImport } from './routes/shop'
@@ -58,6 +59,11 @@ const DonateRoute = DonateRouteImport.update({
 const PaymentSecurityRoute = PaymentSecurityRouteImport.update({
   id: '/payment-security',
   path: '/payment-security',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PortfolioRoute = PortfolioRouteImport.update({
+  id: '/portfolio',
+  path: '/portfolio',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PrivacyPolicyRoute = PrivacyPolicyRouteImport.update({
@@ -109,6 +115,7 @@ export interface FileRoutesByFullPath {
   '/cookie-policy': typeof CookiePolicyRoute
   '/donate': typeof DonateRoute
   '/payment-security': typeof PaymentSecurityRoute
+  '/portfolio': typeof PortfolioRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/return-policy': typeof ReturnPolicyRoute
   '/shop': typeof ShopRoute
@@ -126,6 +133,7 @@ export interface FileRoutesByTo {
   '/cookie-policy': typeof CookiePolicyRoute
   '/donate': typeof DonateRoute
   '/payment-security': typeof PaymentSecurityRoute
+  '/portfolio': typeof PortfolioRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/return-policy': typeof ReturnPolicyRoute
   '/shop': typeof ShopRoute
@@ -144,6 +152,7 @@ export interface FileRoutesById {
   '/cookie-policy': typeof CookiePolicyRoute
   '/donate': typeof DonateRoute
   '/payment-security': typeof PaymentSecurityRoute
+  '/portfolio': typeof PortfolioRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/return-policy': typeof ReturnPolicyRoute
   '/shop': typeof ShopRoute
@@ -163,6 +172,7 @@ export interface FileRouteTypes {
     | '/cookie-policy'
     | '/donate'
     | '/payment-security'
+    | '/portfolio'
     | '/privacy-policy'
     | '/return-policy'
     | '/shop'
@@ -180,6 +190,7 @@ export interface FileRouteTypes {
     | '/cookie-policy'
     | '/donate'
     | '/payment-security'
+    | '/portfolio'
     | '/privacy-policy'
     | '/return-policy'
     | '/shop'
@@ -197,6 +208,7 @@ export interface FileRouteTypes {
     | '/cookie-policy'
     | '/donate'
     | '/payment-security'
+    | '/portfolio'
     | '/privacy-policy'
     | '/return-policy'
     | '/shop'
@@ -215,6 +227,7 @@ export interface RootRouteChildren {
   CookiePolicyRoute: typeof CookiePolicyRoute
   DonateRoute: typeof DonateRoute
   PaymentSecurityRoute: typeof PaymentSecurityRoute
+  PortfolioRoute: typeof PortfolioRoute
   PrivacyPolicyRoute: typeof PrivacyPolicyRoute
   ReturnPolicyRoute: typeof ReturnPolicyRoute
   ShopRoute: typeof ShopRoute
@@ -274,6 +287,13 @@ declare module '@tanstack/react-router' {
       path: '/payment-security'
       fullPath: '/payment-security'
       preLoaderRoute: typeof PaymentSecurityRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/portfolio': {
+      id: '/portfolio'
+      path: '/portfolio'
+      fullPath: '/portfolio'
+      preLoaderRoute: typeof PortfolioRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/privacy-policy': {
@@ -343,6 +363,7 @@ const rootRouteChildren: RootRouteChildren = {
   CookiePolicyRoute: CookiePolicyRoute,
   DonateRoute: DonateRoute,
   PaymentSecurityRoute: PaymentSecurityRoute,
+  PortfolioRoute: PortfolioRoute,
   PrivacyPolicyRoute: PrivacyPolicyRoute,
   ReturnPolicyRoute: ReturnPolicyRoute,
   ShopRoute: ShopRoute,
@@ -355,13 +376,3 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
