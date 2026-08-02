@@ -152,10 +152,14 @@ function PortfolioPage() {
       </section>
 
       <Dialog open={openWork !== null} onOpenChange={(next) => !next && setOpenWork(null)}>
-        <DialogContent className="max-w-[min(64rem,95vw)] border-0 bg-transparent p-0 shadow-none sm:max-w-[min(64rem,95vw)]">
+        <DialogContent className="w-[96vw] max-w-[min(64rem,96vw)] border-0 bg-transparent p-0 shadow-none sm:max-w-[min(64rem,92vw)]">
           <DialogTitle className="sr-only">{openWork?.title ?? "Gallery"}</DialogTitle>
           {openWork && (
-            <Carousel opts={{ loop: true, startIndex }} className="w-full">
+            <Carousel
+              key={`${openWork.id}-${startIndex}`}
+              opts={{ loop: true, startIndex, align: "center" }}
+              className="w-full px-2 sm:px-0"
+            >
               <CarouselContent>
                 {openWork.images.map((image) => (
                   <CarouselItem key={image.src}>
@@ -163,14 +167,14 @@ function PortfolioPage() {
                       <img
                         src={image.src}
                         alt={image.alt}
-                        className="max-h-[75vh] w-full object-contain"
+                        className="max-h-[65vh] w-full object-contain sm:max-h-[75vh]"
                       />
                     </div>
                   </CarouselItem>
                 ))}
               </CarouselContent>
-              <CarouselPrevious className="left-2 size-11 sm:-left-12" />
-              <CarouselNext className="right-2 size-11 sm:-right-12" />
+              <CarouselPrevious className="left-3 z-20 size-10 bg-background/90 sm:-left-12 sm:size-11" />
+              <CarouselNext className="right-3 z-20 size-10 bg-background/90 sm:-right-12 sm:size-11" />
             </Carousel>
           )}
         </DialogContent>
