@@ -161,11 +161,10 @@ function ProductPage() {
                   <Plus className="size-4" aria-hidden="true" />
                 </Button>
               </div>
-              {perMetre && (
-                <span className="text-sm text-muted-foreground">
-                  = {formatTzs(product.price_tzs * quantity)}
-                </span>
-              )}
+              <span className="text-sm text-muted-foreground" aria-live="polite">
+                = {formatTzs(product.price_tzs * quantity)}
+              </span>
+
             </div>
             {perMetre && (
               <p className="mt-2 text-xs text-muted-foreground">
