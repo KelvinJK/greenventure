@@ -11,8 +11,16 @@ const socials = [
 
 export function SiteFooter() {
   return (
-    <footer className="bg-charcoal text-charcoal-foreground">
-      <div className="mx-auto grid w-full max-w-7xl gap-10 px-4 py-14 sm:grid-cols-2 sm:px-6 lg:grid-cols-[1.4fr_1fr_1fr_1fr] lg:px-8">
+    <footer className="relative overflow-hidden bg-charcoal text-charcoal-foreground">
+      <img
+        src={logoAsset.url}
+        alt=""
+        aria-hidden="true"
+        width={320}
+        height={320}
+        className="pointer-events-none absolute -right-6 top-1/2 hidden -translate-y-1/2 select-none opacity-[0.04] sm:block lg:right-10 lg:size-80"
+      />
+      <div className="relative mx-auto grid w-full max-w-7xl gap-10 px-4 py-14 sm:grid-cols-2 sm:px-6 lg:grid-cols-[1.4fr_1fr_1fr_1fr] lg:px-8">
         <div>
           <div className="flex min-w-0 items-center gap-2">
             <img
