@@ -8,6 +8,7 @@ import { Sheet, SheetContent, SheetTitle, SheetTrigger } from "@/components/ui/s
 import { useCart } from "@/context/CartContext";
 
 const navLinks = [
+  { to: "/", label: "Home" },
   { to: "/shop", label: "Shop" },
   { to: "/about", label: "About" },
   { to: "/donate", label: "Donate" },
