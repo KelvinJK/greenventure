@@ -1,0 +1,1 @@
+UPDATE public.products SET image_key = 'decking-plank-stacks' WHERE slug = 'classic-recycled-decking-plank';
