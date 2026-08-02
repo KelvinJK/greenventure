@@ -108,6 +108,10 @@ function CartPage() {
                   <p className="mt-1 text-sm text-muted-foreground">
                     {formatTzs(line.priceTzs)} {line.unit}
                   </p>
+                  <p className="mt-0.5 text-xs text-muted-foreground">
+                    {formatQuantity(line.quantity, line.unit)} × {formatTzs(line.priceTzs)} ={" "}
+                    <span className="font-semibold text-foreground">{formatTzs(line.priceTzs * line.quantity)}</span>
+                  </p>
                 </div>
                 <div className="flex items-center gap-3">
                   <div className="flex items-center rounded-md border border-input">
