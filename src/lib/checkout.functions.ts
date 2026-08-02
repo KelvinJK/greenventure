@@ -18,7 +18,7 @@ export const createShopCheckoutSession = createServerFn({ method: "POST" })
     z
       .object({
         items: z
-          .array(z.object({ slug: z.string().min(1).max(120), quantity: z.number().int().min(1).max(999) }))
+          .array(z.object({ slug: z.string().min(1).max(120), quantity: z.number().min(0.5).max(999) }))
           .min(1)
           .max(50),
         customer: customerSchema,
