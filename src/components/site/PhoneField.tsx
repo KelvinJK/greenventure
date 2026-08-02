@@ -47,7 +47,10 @@ export function PhoneField({
             className="h-11 w-[7.5rem] shrink-0"
             aria-label="Country dialling code"
           >
-            <SelectValue />
+            <SelectValue aria-label={country.name}>
+              <span className="mr-1">{country.flag}</span>
+              {country.dial}
+            </SelectValue>
           </SelectTrigger>
           <SelectContent className="max-h-72">
             {countries.map((item) => (
