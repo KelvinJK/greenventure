@@ -83,7 +83,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
   const value = useMemo<CartContextValue>(
     () => ({
       lines,
-      itemCount: lines.reduce((sum, line) => sum + line.quantity, 0),
+      itemCount: lines.length,
       totalTzs: lines.reduce((sum, line) => sum + line.priceTzs * line.quantity, 0),
       addLine,
       setQuantity,
