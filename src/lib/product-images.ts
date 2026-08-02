@@ -12,6 +12,7 @@ import lumberGrooved from "@/assets/lumber-grooved-boards.jpg.asset.json";
 import lumberSmooth from "@/assets/lumber-smooth-planks.jpg.asset.json";
 import heritageBench from "@/assets/furniture-heritage-bench.jpg.asset.json";
 import courtyardTable from "@/assets/furniture-courtyard-table.jpg.asset.json";
+import boardwalkJetty from "@/assets/decking-boardwalk-jetty.jpg.asset.json";
 import deckingPlankStacks from "@/assets/decking-plank-stacks.jpg.asset.json";
 
 const images: Record<string, string> = {
@@ -28,6 +29,7 @@ const images: Record<string, string> = {
   "lumber-grooved-boards": lumberGrooved.url,
   "lumber-smooth-planks": lumberSmooth.url,
   "decking-plank-stacks": deckingPlankStacks.url,
+  "decking-boardwalk-jetty": boardwalkJetty.url,
   "furniture-heritage-bench": heritageBench.url,
   "furniture-courtyard-table": courtyardTable.url,
 };
