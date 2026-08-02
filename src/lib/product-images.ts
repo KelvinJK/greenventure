@@ -10,6 +10,7 @@ import poolLounger from "@/assets/furniture-pool-lounger.jpg.asset.json";
 import gardenChairSet from "@/assets/furniture-garden-chair-set.jpg.asset.json";
 import lumberGrooved from "@/assets/lumber-grooved-boards.jpg.asset.json";
 import lumberSmooth from "@/assets/lumber-smooth-planks.jpg.asset.json";
+import deckingPlankStacks from "@/assets/decking-plank-stacks.jpg.asset.json";
 
 const images: Record<string, string> = {
   decking,
@@ -24,6 +25,7 @@ const images: Record<string, string> = {
   "furniture-garden-chair-set": gardenChairSet.url,
   "lumber-grooved-boards": lumberGrooved.url,
   "lumber-smooth-planks": lumberSmooth.url,
+  "decking-plank-stacks": deckingPlankStacks.url,
 };
 
 export function productImage(key: string): string {
