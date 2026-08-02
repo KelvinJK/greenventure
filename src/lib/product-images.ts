@@ -17,6 +17,7 @@ const images: Record<string, string> = {
   "furniture-bench-set-black": benchSetBlack.url,
   "furniture-picnic-table": picnicTable.url,
   "furniture-dining-set": diningSet.url,
+  "furniture-pool-lounger": poolLounger.url,
   "lumber-grooved-boards": lumberGrooved.url,
   "lumber-smooth-planks": lumberSmooth.url,
 };
