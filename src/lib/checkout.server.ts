@@ -47,7 +47,8 @@ export async function startShopCheckout(
     .map((item) => {
       const product = products.find((candidate) => candidate.slug === item.slug);
       if (!product) return null;
-      const quantity = Math.max(1, Math.min(999, Math.round(item.quantity)));
+      // Lumber is sold per running metre, so allow half-metre quantities.
+      const quantity = Math.max(0.5, Math.min(999, Math.round(item.quantity * 2) / 2));
       return { product, quantity };
     })
     .filter((line): line is { product: (typeof products)[number]; quantity: number } =>
@@ -56,7 +57,9 @@ export async function startShopCheckout(
 
   if (lines.length === 0) return { status: "error", message: "Your cart is empty." };
 
-  const totalTzs = lines.reduce((sum, line) => sum + line.product.price_tzs * line.quantity, 0);
+  const totalTzs = Math.round(
+    lines.reduce((sum, line) => sum + line.product.price_tzs * line.quantity, 0),
+  );
   const description = `Green Venture order: ${lines.length} product${lines.length > 1 ? "s" : ""}`;
 
   const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
