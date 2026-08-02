@@ -10,6 +10,7 @@ import { useCart } from "@/context/CartContext";
 const navLinks: { to: string; label: string; exact?: boolean }[] = [
   { to: "/", label: "Home", exact: true },
   { to: "/shop", label: "Shop" },
+  { to: "/portfolio", label: "Portfolio" },
   { to: "/about", label: "About" },
   { to: "/donate", label: "Donate" },
   { to: "/contact", label: "Contact" },
@@ -55,7 +56,7 @@ export function SiteHeader() {
 
         <div className="flex items-center gap-2">
           <Button asChild className="hidden h-11 px-5 sm:inline-flex">
-            <Link to="/contact">Get a Quote</Link>
+            <Link to="/portfolio">Portfolio</Link>
           </Button>
 
           <Button asChild variant="ghost" size="icon" className="relative size-11" aria-label="Cart">
@@ -91,8 +92,8 @@ export function SiteHeader() {
                   </Link>
                 ))}
                 <Button asChild className="mt-4 mx-2 h-12">
-                  <Link to="/contact" onClick={() => setOpen(false)}>
-                    Get a Quote
+                  <Link to="/portfolio" onClick={() => setOpen(false)}>
+                    Portfolio
                   </Link>
                 </Button>
               </nav>

@@ -114,7 +114,7 @@ function HomePage() {
                 variant="outline"
                 className="h-11 rounded-md border-charcoal-foreground/70 bg-transparent px-7 text-base text-charcoal-foreground hover:bg-charcoal-foreground/10 hover:text-charcoal-foreground"
               >
-                <Link to="/contact">Portfolio</Link>
+                <Link to="/portfolio">Portfolio</Link>
               </Button>
             </div>
           </div>
