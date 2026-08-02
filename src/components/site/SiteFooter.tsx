@@ -176,7 +176,7 @@ export function SiteFooter() {
 
       <div className="border-t border-charcoal-foreground/10">
         <div className="mx-auto grid w-full max-w-7xl gap-2 px-4 py-6 text-xs text-charcoal-foreground/50 sm:flex sm:items-center sm:justify-between sm:px-6 lg:px-8">
-          <p>© 2026 Green Venture Tanzania. All Rights Reserved.</p>
+          <p>© {new Date().getFullYear()} Green Venture Tanzania. All Rights Reserved.</p>
           <p>
             Payments securely processed by{" "}
             <a

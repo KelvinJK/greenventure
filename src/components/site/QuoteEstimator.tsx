@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import { Calculator } from "lucide-react";
+import { Calculator, FileDown } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -13,6 +13,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { formatTzs, isPerMetre } from "@/lib/format";
+import { downloadQuotePdf } from "@/lib/quote-pdf";
 import type { Product } from "@/lib/catalog-queries";
 
 const BOARD_LENGTH_M = 3;
@@ -130,6 +131,24 @@ export function QuoteEstimator({
       `Indicative cost: ${formatTzs(result.estimate)} at ${formatTzs(selected.price_tzs)} ${selected.unit}`,
     ];
     return lines.join("\n");
+  }
+
+  function handleDownload() {
+    if (!selected || !result) return;
+    downloadQuotePdf({
+      application: app.label,
+      material: selected.name,
+      profile: `${result.profile.widthMm} mm x ${result.profile.thicknessMm} mm, 3 m lengths`,
+      basis: linear
+        ? `${result.run.toFixed(2)} m running length`
+        : `${result.baseArea.toFixed(2)} m2${mode === "dimensions" ? ` (${toNumber(width)} m x ${toNumber(height)} m)` : ""}, ${Math.max(0, toNumber(gapMm))} mm board gap`,
+      allowance: `${Math.min(50, Math.max(0, toNumber(wastePct)))}%`,
+      pieces: result.pieces,
+      metres: result.metres,
+      unitPrice: `${formatTzs(selected.price_tzs)} ${selected.unit}`,
+      billed: `${result.billed} ${result.perMetre ? "m" : "pcs"}`,
+      estimate: formatTzs(result.estimate),
+    });
   }
 
   return (
@@ -324,14 +343,20 @@ export function QuoteEstimator({
             </div>
           </dl>
 
-          <Button
-            type="button"
-            variant="outline"
-            className="mt-5 h-11 w-full"
-            onClick={() => onUseEstimate(summary())}
-          >
-            Add this estimate to my request
-          </Button>
+          <div className="mt-5 grid gap-3 sm:grid-cols-2">
+            <Button
+              type="button"
+              variant="outline"
+              className="h-11 w-full"
+              onClick={() => onUseEstimate(summary())}
+            >
+              Add this estimate to my request
+            </Button>
+            <Button type="button" variant="secondary" className="h-11 w-full" onClick={handleDownload}>
+              <FileDown className="size-4" aria-hidden="true" />
+              Download quote PDF
+            </Button>
+          </div>
           <p className="mt-3 text-xs leading-relaxed text-muted-foreground">
             Indicative only. Delivery, fixings, joists and site conditions are priced in the final quote.
           </p>
