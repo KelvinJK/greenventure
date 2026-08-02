@@ -107,14 +107,14 @@ function HomePage() {
             </p>
             <div className="mt-9 flex flex-wrap gap-3">
               <Button asChild className="h-11 rounded-md px-7 text-base">
-                <Link to="/shop">Shop Decking</Link>
+                <Link to="/shop">Shop Now</Link>
               </Button>
               <Button
                 asChild
                 variant="outline"
                 className="h-11 rounded-md border-charcoal-foreground/70 bg-transparent px-7 text-base text-charcoal-foreground hover:bg-charcoal-foreground/10 hover:text-charcoal-foreground"
               >
-                <Link to="/contact">Get a Custom Quote</Link>
+                <Link to="/contact">Portfolio</Link>
               </Button>
             </div>
           </div>
