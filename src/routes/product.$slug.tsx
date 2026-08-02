@@ -104,31 +104,65 @@ function ProductPage() {
             ))}
           </div>
 
-          <div className="mt-8 flex items-center gap-4">
-            <span className="text-sm font-semibold">Quantity</span>
-            <div className="flex items-center rounded-md border border-input">
-              <Button
-                variant="ghost"
-                size="icon"
-                className="size-11"
-                aria-label="Decrease quantity"
-                onClick={() => setQuantity((value) => Math.max(1, value - 1))}
-              >
-                <Minus className="size-4" aria-hidden="true" />
-              </Button>
-              <span className="w-12 text-center text-sm font-semibold" aria-live="polite">
-                {quantity}
+          <div className="mt-8">
+            <div className="flex flex-wrap items-center gap-4">
+              <span className="text-sm font-semibold">
+                {perMetre ? "Metres needed" : "Quantity"}
               </span>
-              <Button
-                variant="ghost"
-                size="icon"
-                className="size-11"
-                aria-label="Increase quantity"
-                onClick={() => setQuantity((value) => Math.min(999, value + 1))}
-              >
-                <Plus className="size-4" aria-hidden="true" />
-              </Button>
+              <div className="flex items-center rounded-md border border-input">
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="size-11"
+                  aria-label={perMetre ? "Decrease metres" : "Decrease quantity"}
+                  onClick={() => setQuantity((value) => clampQuantity(value - step))}
+                >
+                  <Minus className="size-4" aria-hidden="true" />
+                </Button>
+                {perMetre ? (
+                  <Input
+                    type="number"
+                    inputMode="decimal"
+                    step={0.5}
+                    min={0.5}
+                    max={999}
+                    aria-label="Metres needed"
+                    value={metresText}
+                    onChange={(event) => {
+                      setMetresText(event.target.value);
+                      const parsed = Number.parseFloat(event.target.value.replace(",", "."));
+                      if (Number.isFinite(parsed) && parsed > 0) setQuantity(clampQuantity(parsed));
+                    }}
+                    onBlur={() => setMetresText(String(quantity))}
+                    className="h-11 w-24 border-0 text-center text-sm font-semibold shadow-none focus-visible:ring-0"
+                  />
+                ) : (
+                  <span className="w-12 text-center text-sm font-semibold" aria-live="polite">
+                    {quantity}
+                  </span>
+                )}
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="size-11"
+                  aria-label={perMetre ? "Increase metres" : "Increase quantity"}
+                  onClick={() => setQuantity((value) => clampQuantity(value + step))}
+                >
+                  <Plus className="size-4" aria-hidden="true" />
+                </Button>
+              </div>
+              {perMetre && (
+                <span className="text-sm text-muted-foreground">
+                  = {formatTzs(product.price_tzs * quantity)}
+                </span>
+              )}
             </div>
+            {perMetre && (
+              <p className="mt-2 text-xs text-muted-foreground">
+                Sold by the running metre in half metre steps. Boards are supplied in 3 m lengths and
+                cut to your measurement on request.
+              </p>
+            )}
           </div>
 
           <Button
@@ -144,11 +178,14 @@ function ProductPage() {
                 },
                 quantity,
               );
-              toast.success(`${quantity} × ${product.name} added to your cart`);
+              toast.success(
+                `${formatQuantity(quantity, product.unit)} of ${product.name} added to your cart`,
+              );
             }}
           >
-            Add to Cart
+            {perMetre ? `Add ${formatQuantity(quantity, product.unit)} to Cart` : "Add to Cart"}
           </Button>
+
 
           <Link
             to="/contact"
