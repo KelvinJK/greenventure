@@ -98,10 +98,7 @@ function HomePage() {
 
         <div className="relative mx-auto flex w-full max-w-7xl flex-col px-4 py-24 sm:px-6 lg:px-8">
           <div className="deck-fade-up max-w-3xl">
-            <p className="text-xs font-semibold tracking-[0.24em] text-charcoal-foreground/80 uppercase">
-              Circular building materials · Tanzania
-            </p>
-            <h1 className="mt-5 font-display text-[clamp(2rem,7vw,4.25rem)] leading-[1.05] text-charcoal-foreground">
+            <h1 className="font-display text-[clamp(2rem,7vw,4.25rem)] leading-[1.05] text-charcoal-foreground">
               Sustainable Outdoor Living, Built to Last 50+ Years
             </h1>
             <p className="mt-6 max-w-2xl text-[clamp(1rem,2.4vw,1.2rem)] leading-relaxed text-charcoal-foreground/85">
