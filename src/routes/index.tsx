@@ -5,11 +5,11 @@ import { ArrowRight, Check, Droplets, Bug, ShieldCheck, Timer, X } from "lucide-
 import { Button } from "@/components/ui/button";
 import { productsQuery } from "@/lib/catalog-queries";
 import { productImage } from "@/lib/product-images";
-import heroVideo from "@/assets/hero-background-v2.mp4.asset.json";
-import heroPoster from "@/assets/hero-poster-v2.jpg.asset.json";
-import deckingShowcase from "@/assets/showcase-decking.jpg.asset.json";
-import furnitureShowcase from "@/assets/showcase-furniture.jpg.asset.json";
-import lumberShowcase from "@/assets/showcase-lumber.jpg.asset.json";
+const heroVideo = { url: "/media/hero-background-v2.mp4" };
+const heroPoster = { url: "/media/hero-poster-v2.jpg" };
+const deckingShowcase = { url: "/media/showcase-decking.jpg" };
+const furnitureShowcase = { url: "/media/showcase-furniture.jpg" };
+const lumberShowcase = { url: "/media/showcase-lumber.jpg" };
 
 export const Route = createFileRoute("/")({
   head: () => ({

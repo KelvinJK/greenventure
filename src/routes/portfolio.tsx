@@ -10,12 +10,12 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
-import shot1 from "@/assets/portfolio-DSC0132.jpg.asset.json";
-import shot2 from "@/assets/portfolio-DSC0137.jpg.asset.json";
-import shot3 from "@/assets/portfolio-DSC0153.jpg.asset.json";
-import shot4 from "@/assets/portfolio-DSC0160.jpg.asset.json";
-import shot5 from "@/assets/portfolio-DSC0166.jpg.asset.json";
-import shot6 from "@/assets/portfolio-DSC0167.jpg.asset.json";
+const shot1 = { url: "/media/portfolio-DSC0132.jpg" };
+const shot2 = { url: "/media/portfolio-DSC0137.jpg" };
+const shot3 = { url: "/media/portfolio-DSC0153.jpg" };
+const shot4 = { url: "/media/portfolio-DSC0160.jpg" };
+const shot5 = { url: "/media/portfolio-DSC0166.jpg" };
+const shot6 = { url: "/media/portfolio-DSC0167.jpg" };
 
 export const Route = createFileRoute("/portfolio")({
   head: () => ({

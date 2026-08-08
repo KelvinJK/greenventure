@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { Facebook, Instagram, Linkedin, Mail, MapPin, Phone } from "lucide-react";
 
-import logoAsset from "@/assets/green-venture-logo.webp.asset.json";
+const logoAsset = { url: "/media/green-venture-logo.webp" };
 
 const socials = [
   { label: "LinkedIn", href: "https://www.linkedin.com/company/green-venture-tanzania/", Icon: Linkedin },
