@@ -14,10 +14,10 @@ import { Route as AboutRouteImport } from './routes/about'
 import { Route as CartRouteImport } from './routes/cart'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as CookiePolicyRouteImport } from './routes/cookie-policy'
-import { Route as DonateRouteImport } from './routes/donate'
 import { Route as McpRouteImport } from './routes/mcp'
+import { Route as OurImpactRouteImport } from './routes/our-impact'
+import { Route as OurWorkRouteImport } from './routes/our-work'
 import { Route as PaymentSecurityRouteImport } from './routes/payment-security'
-import { Route as PortfolioRouteImport } from './routes/portfolio'
 import { Route as PrivacyPolicyRouteImport } from './routes/privacy-policy'
 import { Route as ReturnPolicyRouteImport } from './routes/return-policy'
 import { Route as ShopRouteImport } from './routes/shop'
@@ -55,24 +55,24 @@ const CookiePolicyRoute = CookiePolicyRouteImport.update({
   path: '/cookie-policy',
   getParentRoute: () => rootRouteImport,
 } as any)
-const DonateRoute = DonateRouteImport.update({
-  id: '/donate',
-  path: '/donate',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const McpRoute = McpRouteImport.update({
   id: '/mcp',
   path: '/mcp',
   getParentRoute: () => rootRouteImport,
 } as any)
+const OurImpactRoute = OurImpactRouteImport.update({
+  id: '/our-impact',
+  path: '/our-impact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OurWorkRoute = OurWorkRouteImport.update({
+  id: '/our-work',
+  path: '/our-work',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PaymentSecurityRoute = PaymentSecurityRouteImport.update({
   id: '/payment-security',
   path: '/payment-security',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const PortfolioRoute = PortfolioRouteImport.update({
-  id: '/portfolio',
-  path: '/portfolio',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PrivacyPolicyRoute = PrivacyPolicyRouteImport.update({
@@ -140,10 +140,10 @@ export interface FileRoutesByFullPath {
   '/cart': typeof CartRoute
   '/contact': typeof ContactRoute
   '/cookie-policy': typeof CookiePolicyRoute
-  '/donate': typeof DonateRoute
   '/mcp': typeof McpRoute
+  '/our-impact': typeof OurImpactRoute
+  '/our-work': typeof OurWorkRoute
   '/payment-security': typeof PaymentSecurityRoute
-  '/portfolio': typeof PortfolioRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/return-policy': typeof ReturnPolicyRoute
   '/shop': typeof ShopRoute
@@ -162,10 +162,10 @@ export interface FileRoutesByTo {
   '/cart': typeof CartRoute
   '/contact': typeof ContactRoute
   '/cookie-policy': typeof CookiePolicyRoute
-  '/donate': typeof DonateRoute
   '/mcp': typeof McpRoute
+  '/our-impact': typeof OurImpactRoute
+  '/our-work': typeof OurWorkRoute
   '/payment-security': typeof PaymentSecurityRoute
-  '/portfolio': typeof PortfolioRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/return-policy': typeof ReturnPolicyRoute
   '/shop': typeof ShopRoute
@@ -185,10 +185,10 @@ export interface FileRoutesById {
   '/cart': typeof CartRoute
   '/contact': typeof ContactRoute
   '/cookie-policy': typeof CookiePolicyRoute
-  '/donate': typeof DonateRoute
   '/mcp': typeof McpRoute
+  '/our-impact': typeof OurImpactRoute
+  '/our-work': typeof OurWorkRoute
   '/payment-security': typeof PaymentSecurityRoute
-  '/portfolio': typeof PortfolioRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/return-policy': typeof ReturnPolicyRoute
   '/shop': typeof ShopRoute
@@ -209,10 +209,10 @@ export interface FileRouteTypes {
     | '/cart'
     | '/contact'
     | '/cookie-policy'
-    | '/donate'
     | '/mcp'
+    | '/our-impact'
+    | '/our-work'
     | '/payment-security'
-    | '/portfolio'
     | '/privacy-policy'
     | '/return-policy'
     | '/shop'
@@ -231,10 +231,10 @@ export interface FileRouteTypes {
     | '/cart'
     | '/contact'
     | '/cookie-policy'
-    | '/donate'
     | '/mcp'
+    | '/our-impact'
+    | '/our-work'
     | '/payment-security'
-    | '/portfolio'
     | '/privacy-policy'
     | '/return-policy'
     | '/shop'
@@ -253,10 +253,10 @@ export interface FileRouteTypes {
     | '/cart'
     | '/contact'
     | '/cookie-policy'
-    | '/donate'
     | '/mcp'
+    | '/our-impact'
+    | '/our-work'
     | '/payment-security'
-    | '/portfolio'
     | '/privacy-policy'
     | '/return-policy'
     | '/shop'
@@ -276,10 +276,10 @@ export interface RootRouteChildren {
   CartRoute: typeof CartRoute
   ContactRoute: typeof ContactRoute
   CookiePolicyRoute: typeof CookiePolicyRoute
-  DonateRoute: typeof DonateRoute
   McpRoute: typeof McpRoute
+  OurImpactRoute: typeof OurImpactRoute
+  OurWorkRoute: typeof OurWorkRoute
   PaymentSecurityRoute: typeof PaymentSecurityRoute
-  PortfolioRoute: typeof PortfolioRoute
   PrivacyPolicyRoute: typeof PrivacyPolicyRoute
   ReturnPolicyRoute: typeof ReturnPolicyRoute
   ShopRoute: typeof ShopRoute
@@ -330,13 +330,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CookiePolicyRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/donate': {
-      id: '/donate'
-      path: '/donate'
-      fullPath: '/donate'
-      preLoaderRoute: typeof DonateRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/mcp': {
       id: '/mcp'
       path: '/mcp'
@@ -344,18 +337,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof McpRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/our-impact': {
+      id: '/our-impact'
+      path: '/our-impact'
+      fullPath: '/our-impact'
+      preLoaderRoute: typeof OurImpactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/our-work': {
+      id: '/our-work'
+      path: '/our-work'
+      fullPath: '/our-work'
+      preLoaderRoute: typeof OurWorkRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/payment-security': {
       id: '/payment-security'
       path: '/payment-security'
       fullPath: '/payment-security'
       preLoaderRoute: typeof PaymentSecurityRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/portfolio': {
-      id: '/portfolio'
-      path: '/portfolio'
-      fullPath: '/portfolio'
-      preLoaderRoute: typeof PortfolioRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/privacy-policy': {
@@ -444,10 +444,10 @@ const rootRouteChildren: RootRouteChildren = {
   CartRoute: CartRoute,
   ContactRoute: ContactRoute,
   CookiePolicyRoute: CookiePolicyRoute,
-  DonateRoute: DonateRoute,
   McpRoute: McpRoute,
+  OurImpactRoute: OurImpactRoute,
+  OurWorkRoute: OurWorkRoute,
   PaymentSecurityRoute: PaymentSecurityRoute,
-  PortfolioRoute: PortfolioRoute,
   PrivacyPolicyRoute: PrivacyPolicyRoute,
   ReturnPolicyRoute: ReturnPolicyRoute,
   ShopRoute: ShopRoute,
