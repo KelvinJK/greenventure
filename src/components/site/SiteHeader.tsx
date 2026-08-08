@@ -2,7 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { Menu, ShoppingCart } from "lucide-react";
 import { useState } from "react";
 
-import logoAsset from "@/assets/green-venture-logo.webp.asset.json";
+const logoAsset = { url: "/media/green-venture-logo.webp" };
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { useCart } from "@/context/CartContext";
