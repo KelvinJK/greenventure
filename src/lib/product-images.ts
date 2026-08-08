@@ -2,20 +2,20 @@ import decking from "@/assets/product-decking.jpg";
 import furniture from "@/assets/product-furniture.jpg";
 import lumber from "@/assets/product-lumber.jpg";
 import fencing from "@/assets/product-fencing.jpg";
-import deckingLodgeTerrace from "@/assets/decking-lodge-terrace.jpg.asset.json";
-import benchSetBlack from "@/assets/furniture-bench-set-black.jpg.asset.json";
-import picnicTable from "@/assets/furniture-picnic-table.jpg.asset.json";
-import diningSet from "@/assets/furniture-dining-set.jpg.asset.json";
-import poolLounger from "@/assets/furniture-pool-lounger.jpg.asset.json";
-import gardenChairSet from "@/assets/furniture-garden-chair-set.jpg.asset.json";
-import lumberGrooved from "@/assets/lumber-grooved-boards.jpg.asset.json";
-import lumberSmooth from "@/assets/lumber-smooth-planks.jpg.asset.json";
-import heritageBench from "@/assets/furniture-heritage-bench.jpg.asset.json";
-import courtyardTable from "@/assets/furniture-courtyard-table.jpg.asset.json";
-import boardwalkJetty from "@/assets/decking-boardwalk-jetty.jpg.asset.json";
-import lumberBeam from "@/assets/lumber-beam-50x150.jpg.asset.json";
-import lumberPost from "@/assets/lumber-post-100x100.jpg.asset.json";
-import deckingPlankStacks from "@/assets/decking-plank-stacks.jpg.asset.json";
+const deckingLodgeTerrace = { url: "/media/decking-lodge-terrace.jpg" };
+const benchSetBlack = { url: "/media/furniture-bench-set-black.jpg" };
+const picnicTable = { url: "/media/furniture-picnic-table.jpg" };
+const diningSet = { url: "/media/furniture-dining-set.jpg" };
+const poolLounger = { url: "/media/furniture-pool-lounger.jpg" };
+const gardenChairSet = { url: "/media/furniture-garden-chair-set.jpg" };
+const lumberGrooved = { url: "/media/lumber-grooved-boards.jpg" };
+const lumberSmooth = { url: "/media/lumber-smooth-planks.jpg" };
+const heritageBench = { url: "/media/furniture-heritage-bench.jpg" };
+const courtyardTable = { url: "/media/furniture-courtyard-table.jpg" };
+const boardwalkJetty = { url: "/media/decking-boardwalk-jetty.jpg" };
+const lumberBeam = { url: "/media/lumber-beam-50x150.jpg" };
+const lumberPost = { url: "/media/lumber-post-100x100.jpg" };
+const deckingPlankStacks = { url: "/media/decking-plank-stacks.jpg" };
 
 const images: Record<string, string> = {
   decking,
