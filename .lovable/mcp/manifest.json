@@ -1,0 +1,119 @@
+{
+  "version": 1,
+  "sdk_version": "0.26.1",
+  "path": "/mcp",
+  "auth": {
+    "type": "none"
+  },
+  "mcp": {
+    "server": {
+      "name": "green-venture-website",
+      "version": "0.1.0",
+      "title": "Green Venture Website"
+    },
+    "tools": [
+      {
+        "name": "list_products",
+        "title": "List products",
+        "description": "List the Green Venture Tanzania recycled-plastic product catalogue (decking, furniture, fencing, lumber) with TZS prices and units. Optionally filter by category.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {
+            "category": {
+              "description": "Optional category filter, e.g. Decking, Furniture, Fencing, Lumber.",
+              "type": "string"
+            }
+          }
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "get_product",
+        "title": "Get product",
+        "description": "Get one Green Venture Tanzania product by its slug, including full description, TZS price and unit.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {
+            "slug": {
+              "type": "string",
+              "description": "Product slug, e.g. classic-recycled-decking-plank."
+            }
+          },
+          "required": [
+            "slug"
+          ]
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "list_donation_tiers",
+        "title": "List donation tiers",
+        "description": "List the Green Venture Tanzania school-desk donation tiers with their TZS amounts and descriptions.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {}
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "estimate_boards_needed",
+        "title": "Estimate boards needed",
+        "description": "Estimate how many 3 m recycled-plastic boards are needed to cover an area, from the area in square metres (or width x length) and the board width, plus an allowance for gaps and waste.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {
+            "areaSqm": {
+              "description": "Area to cover in square metres.",
+              "type": "number"
+            },
+            "widthM": {
+              "description": "Space width in metres (used with lengthM).",
+              "type": "number"
+            },
+            "lengthM": {
+              "description": "Space length in metres (used with widthM).",
+              "type": "number"
+            },
+            "boardWidthMm": {
+              "description": "Board width in millimetres. Defaults to 152.4 mm (6 inch).",
+              "type": "number"
+            },
+            "gapMm": {
+              "description": "Gap between boards in millimetres. Defaults to 5.",
+              "type": "number"
+            },
+            "wastePercent": {
+              "description": "Waste allowance percentage. Defaults to 10.",
+              "type": "number"
+            }
+          }
+        },
+        "outputSchema": null
+      }
+    ]
+  }
+}
