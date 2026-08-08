@@ -11,7 +11,7 @@ import { Label } from "@/components/ui/label";
 import { donationTiersQuery } from "@/lib/catalog-queries";
 import { createDonationCheckoutSession } from "@/lib/checkout.functions";
 import { formatTzs } from "@/lib/format";
-import classroomImage from "@/assets/donate-classroom.jpg";
+const classroomImage = "/media/donate-classroom.png";
 
 type DonationTier = {
   id: string;
