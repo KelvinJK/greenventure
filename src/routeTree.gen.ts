@@ -15,6 +15,7 @@ import { Route as CartRouteImport } from './routes/cart'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as CookiePolicyRouteImport } from './routes/cookie-policy'
 import { Route as DonateRouteImport } from './routes/donate'
+import { Route as McpRouteImport } from './routes/mcp'
 import { Route as PaymentSecurityRouteImport } from './routes/payment-security'
 import { Route as PortfolioRouteImport } from './routes/portfolio'
 import { Route as PrivacyPolicyRouteImport } from './routes/privacy-policy'
@@ -23,7 +24,10 @@ import { Route as ShopRouteImport } from './routes/shop'
 import { Route as SuccessRouteImport } from './routes/success'
 import { Route as SustainabilityRouteImport } from './routes/sustainability'
 import { Route as TermsAndConditionsRouteImport } from './routes/terms-and-conditions'
+import { Route as Char91DotmcpChar93ListToolsRouteImport } from './routes/[.mcp]/list-tools'
+import { Route as Char91DotwellKnownChar93OauthProtectedResourceRouteImport } from './routes/[.well-known]/oauth-protected-resource'
 import { Route as ProductSlugRouteImport } from './routes/product.$slug'
+import { Route as Char91DotmcpChar93InvokeToolToolRouteImport } from './routes/[.mcp]/invoke-tool/$tool'
 import { Route as ApiPublicSnippeWebhookRouteImport } from './routes/api/public/snippe-webhook'
 
 const IndexRoute = IndexRouteImport.update({
@@ -54,6 +58,11 @@ const CookiePolicyRoute = CookiePolicyRouteImport.update({
 const DonateRoute = DonateRouteImport.update({
   id: '/donate',
   path: '/donate',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const McpRoute = McpRouteImport.update({
+  id: '/mcp',
+  path: '/mcp',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PaymentSecurityRoute = PaymentSecurityRouteImport.update({
@@ -96,11 +105,29 @@ const TermsAndConditionsRoute = TermsAndConditionsRouteImport.update({
   path: '/terms-and-conditions',
   getParentRoute: () => rootRouteImport,
 } as any)
+const Char91DotmcpChar93ListToolsRoute =
+  Char91DotmcpChar93ListToolsRouteImport.update({
+    id: '/.mcp/list-tools',
+    path: '/.mcp/list-tools',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const Char91DotwellKnownChar93OauthProtectedResourceRoute =
+  Char91DotwellKnownChar93OauthProtectedResourceRouteImport.update({
+    id: '/.well-known/oauth-protected-resource',
+    path: '/.well-known/oauth-protected-resource',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const ProductSlugRoute = ProductSlugRouteImport.update({
   id: '/product/$slug',
   path: '/product/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const Char91DotmcpChar93InvokeToolToolRoute =
+  Char91DotmcpChar93InvokeToolToolRouteImport.update({
+    id: '/.mcp/invoke-tool/$tool',
+    path: '/.mcp/invoke-tool/$tool',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const ApiPublicSnippeWebhookRoute = ApiPublicSnippeWebhookRouteImport.update({
   id: '/api/public/snippe-webhook',
   path: '/api/public/snippe-webhook',
@@ -114,6 +141,7 @@ export interface FileRoutesByFullPath {
   '/contact': typeof ContactRoute
   '/cookie-policy': typeof CookiePolicyRoute
   '/donate': typeof DonateRoute
+  '/mcp': typeof McpRoute
   '/payment-security': typeof PaymentSecurityRoute
   '/portfolio': typeof PortfolioRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
@@ -122,7 +150,10 @@ export interface FileRoutesByFullPath {
   '/success': typeof SuccessRoute
   '/sustainability': typeof SustainabilityRoute
   '/terms-and-conditions': typeof TermsAndConditionsRoute
+  '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
+  '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   '/product/$slug': typeof ProductSlugRoute
+  '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
   '/api/public/snippe-webhook': typeof ApiPublicSnippeWebhookRoute
 }
 export interface FileRoutesByTo {
@@ -132,6 +163,7 @@ export interface FileRoutesByTo {
   '/contact': typeof ContactRoute
   '/cookie-policy': typeof CookiePolicyRoute
   '/donate': typeof DonateRoute
+  '/mcp': typeof McpRoute
   '/payment-security': typeof PaymentSecurityRoute
   '/portfolio': typeof PortfolioRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
@@ -140,7 +172,10 @@ export interface FileRoutesByTo {
   '/success': typeof SuccessRoute
   '/sustainability': typeof SustainabilityRoute
   '/terms-and-conditions': typeof TermsAndConditionsRoute
+  '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
+  '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   '/product/$slug': typeof ProductSlugRoute
+  '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
   '/api/public/snippe-webhook': typeof ApiPublicSnippeWebhookRoute
 }
 export interface FileRoutesById {
@@ -151,6 +186,7 @@ export interface FileRoutesById {
   '/contact': typeof ContactRoute
   '/cookie-policy': typeof CookiePolicyRoute
   '/donate': typeof DonateRoute
+  '/mcp': typeof McpRoute
   '/payment-security': typeof PaymentSecurityRoute
   '/portfolio': typeof PortfolioRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
@@ -159,7 +195,10 @@ export interface FileRoutesById {
   '/success': typeof SuccessRoute
   '/sustainability': typeof SustainabilityRoute
   '/terms-and-conditions': typeof TermsAndConditionsRoute
+  '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
+  '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   '/product/$slug': typeof ProductSlugRoute
+  '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
   '/api/public/snippe-webhook': typeof ApiPublicSnippeWebhookRoute
 }
 export interface FileRouteTypes {
@@ -171,6 +210,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/cookie-policy'
     | '/donate'
+    | '/mcp'
     | '/payment-security'
     | '/portfolio'
     | '/privacy-policy'
@@ -179,7 +219,10 @@ export interface FileRouteTypes {
     | '/success'
     | '/sustainability'
     | '/terms-and-conditions'
+    | '/.mcp/list-tools'
+    | '/.well-known/oauth-protected-resource'
     | '/product/$slug'
+    | '/.mcp/invoke-tool/$tool'
     | '/api/public/snippe-webhook'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -189,6 +232,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/cookie-policy'
     | '/donate'
+    | '/mcp'
     | '/payment-security'
     | '/portfolio'
     | '/privacy-policy'
@@ -197,7 +241,10 @@ export interface FileRouteTypes {
     | '/success'
     | '/sustainability'
     | '/terms-and-conditions'
+    | '/.mcp/list-tools'
+    | '/.well-known/oauth-protected-resource'
     | '/product/$slug'
+    | '/.mcp/invoke-tool/$tool'
     | '/api/public/snippe-webhook'
   id:
     | '__root__'
@@ -207,6 +254,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/cookie-policy'
     | '/donate'
+    | '/mcp'
     | '/payment-security'
     | '/portfolio'
     | '/privacy-policy'
@@ -215,7 +263,10 @@ export interface FileRouteTypes {
     | '/success'
     | '/sustainability'
     | '/terms-and-conditions'
+    | '/.mcp/list-tools'
+    | '/.well-known/oauth-protected-resource'
     | '/product/$slug'
+    | '/.mcp/invoke-tool/$tool'
     | '/api/public/snippe-webhook'
   fileRoutesById: FileRoutesById
 }
@@ -226,6 +277,7 @@ export interface RootRouteChildren {
   ContactRoute: typeof ContactRoute
   CookiePolicyRoute: typeof CookiePolicyRoute
   DonateRoute: typeof DonateRoute
+  McpRoute: typeof McpRoute
   PaymentSecurityRoute: typeof PaymentSecurityRoute
   PortfolioRoute: typeof PortfolioRoute
   PrivacyPolicyRoute: typeof PrivacyPolicyRoute
@@ -234,7 +286,10 @@ export interface RootRouteChildren {
   SuccessRoute: typeof SuccessRoute
   SustainabilityRoute: typeof SustainabilityRoute
   TermsAndConditionsRoute: typeof TermsAndConditionsRoute
+  Char91DotmcpChar93ListToolsRoute: typeof Char91DotmcpChar93ListToolsRoute
+  Char91DotwellKnownChar93OauthProtectedResourceRoute: typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   ProductSlugRoute: typeof ProductSlugRoute
+  Char91DotmcpChar93InvokeToolToolRoute: typeof Char91DotmcpChar93InvokeToolToolRoute
   ApiPublicSnippeWebhookRoute: typeof ApiPublicSnippeWebhookRoute
 }
 
@@ -280,6 +335,13 @@ declare module '@tanstack/react-router' {
       path: '/donate'
       fullPath: '/donate'
       preLoaderRoute: typeof DonateRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/mcp': {
+      id: '/mcp'
+      path: '/mcp'
+      fullPath: '/mcp'
+      preLoaderRoute: typeof McpRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/payment-security': {
@@ -338,11 +400,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TermsAndConditionsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/.mcp/list-tools': {
+      id: '/.mcp/list-tools'
+      path: '/.mcp/list-tools'
+      fullPath: '/.mcp/list-tools'
+      preLoaderRoute: typeof Char91DotmcpChar93ListToolsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/.well-known/oauth-protected-resource': {
+      id: '/.well-known/oauth-protected-resource'
+      path: '/.well-known/oauth-protected-resource'
+      fullPath: '/.well-known/oauth-protected-resource'
+      preLoaderRoute: typeof Char91DotwellKnownChar93OauthProtectedResourceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/product/$slug': {
       id: '/product/$slug'
       path: '/product/$slug'
       fullPath: '/product/$slug'
       preLoaderRoute: typeof ProductSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/.mcp/invoke-tool/$tool': {
+      id: '/.mcp/invoke-tool/$tool'
+      path: '/.mcp/invoke-tool/$tool'
+      fullPath: '/.mcp/invoke-tool/$tool'
+      preLoaderRoute: typeof Char91DotmcpChar93InvokeToolToolRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/api/public/snippe-webhook': {
@@ -362,6 +445,7 @@ const rootRouteChildren: RootRouteChildren = {
   ContactRoute: ContactRoute,
   CookiePolicyRoute: CookiePolicyRoute,
   DonateRoute: DonateRoute,
+  McpRoute: McpRoute,
   PaymentSecurityRoute: PaymentSecurityRoute,
   PortfolioRoute: PortfolioRoute,
   PrivacyPolicyRoute: PrivacyPolicyRoute,
@@ -370,7 +454,11 @@ const rootRouteChildren: RootRouteChildren = {
   SuccessRoute: SuccessRoute,
   SustainabilityRoute: SustainabilityRoute,
   TermsAndConditionsRoute: TermsAndConditionsRoute,
+  Char91DotmcpChar93ListToolsRoute: Char91DotmcpChar93ListToolsRoute,
+  Char91DotwellKnownChar93OauthProtectedResourceRoute:
+    Char91DotwellKnownChar93OauthProtectedResourceRoute,
   ProductSlugRoute: ProductSlugRoute,
+  Char91DotmcpChar93InvokeToolToolRoute: Char91DotmcpChar93InvokeToolToolRoute,
   ApiPublicSnippeWebhookRoute: ApiPublicSnippeWebhookRoute,
 }
 export const routeTree = rootRouteImport
