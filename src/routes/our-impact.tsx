@@ -22,7 +22,7 @@ type DonationTier = {
   description: string;
 };
 
-export const Route = createFileRoute("/donate")({
+export const Route = createFileRoute("/our-impact")({
   head: () => ({
     meta: [
       { title: "Donate a Desk | Green Venture Tanzania" },

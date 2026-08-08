@@ -114,7 +114,7 @@ function HomePage() {
                 variant="outline"
                 className="h-11 rounded-md border-charcoal-foreground/70 bg-transparent px-7 text-base text-charcoal-foreground hover:bg-charcoal-foreground/10 hover:text-charcoal-foreground"
               >
-                <Link to="/portfolio">Portfolio</Link>
+                <Link to="/our-work">Our Work</Link>
               </Button>
             </div>
           </div>
@@ -285,7 +285,7 @@ function HomePage() {
             </p>
           </div>
           <Button asChild className="h-11 self-start px-7 text-base lg:self-auto">
-            <Link to="/donate">Donate a desk</Link>
+            <Link to="/our-impact">Donate a desk</Link>
           </Button>
         </div>
       </section>

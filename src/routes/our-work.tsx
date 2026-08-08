@@ -17,7 +17,7 @@ const shot4 = { url: "/media/portfolio-DSC0160.jpg" };
 const shot5 = { url: "/media/portfolio-DSC0166.jpg" };
 const shot6 = { url: "/media/portfolio-DSC0167.jpg" };
 
-export const Route = createFileRoute("/portfolio")({
+export const Route = createFileRoute("/our-work")({
   head: () => ({
     meta: [
       { title: "Portfolio | Green Venture Tanzania Recycled Plastic Work" },
