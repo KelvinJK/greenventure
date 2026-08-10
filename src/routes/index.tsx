@@ -99,7 +99,7 @@ function HomePage() {
         <div className="relative mx-auto flex w-full max-w-7xl flex-col px-4 py-24 sm:px-6 lg:px-8">
           <div className="deck-fade-up max-w-3xl">
             <h1 className="font-display text-[clamp(2rem,7vw,4.25rem)] leading-[1.05] text-charcoal-foreground">
-              Turning plastic trash to treasure
+              TURNING PLASTIC TRASH TO TREASURE
             </h1>
             <p className="mt-6 max-w-2xl text-[clamp(1rem,2.4vw,1.2rem)] leading-relaxed text-charcoal-foreground/85">
               We transform plastic waste into premium decking, furniture, and fencing that is termite-proof,
