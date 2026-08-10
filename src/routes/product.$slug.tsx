@@ -101,12 +101,6 @@ function ProductPage() {
           <h1 className="mt-3 font-display text-[clamp(1.75rem,4vw,2.75rem)] leading-tight">
             {product.name}
           </h1>
-          <p className="mt-5 font-display text-3xl text-primary">
-            {formatTzs(product.price_tzs)}{" "}
-            <span className="font-sans text-sm font-semibold text-muted-foreground">
-              {product.unit}
-            </span>
-          </p>
 
           <div className="mt-6 space-y-4 text-sm leading-relaxed text-muted-foreground">
             {paragraphs.map((paragraph) => (
@@ -161,10 +155,6 @@ function ProductPage() {
                   <Plus className="size-4" aria-hidden="true" />
                 </Button>
               </div>
-              <span className="text-sm text-muted-foreground" aria-live="polite">
-                = {formatTzs(product.price_tzs * quantity)}
-              </span>
-
             </div>
             {perMetre && (
               <p className="mt-2 text-xs text-muted-foreground">

@@ -131,11 +131,10 @@ function CartPage() {
                       </Link>
                     </h2>
                     <p className="mt-1 text-sm text-muted-foreground">
-                      {formatTzs(line.priceTzs)} {line.unit}
+                      {line.unit}
                     </p>
                     <p className="mt-0.5 text-xs text-muted-foreground">
-                      {formatQuantity(line.quantity, line.unit)} × {formatTzs(line.priceTzs)} ={" "}
-                      <span className="font-semibold text-foreground">{formatTzs(line.priceTzs * line.quantity)}</span>
+                      {formatQuantity(line.quantity, line.unit)}
                     </p>
                   </div>
                   <div className="flex flex-wrap items-center gap-3">
@@ -168,9 +167,6 @@ function CartPage() {
                         <Plus className="size-4" aria-hidden="true" />
                       </Button>
                     </div>
-                    <p className="ml-auto w-28 text-right font-display text-sm sm:ml-0">
-                      {formatTzs(line.priceTzs * line.quantity)}
-                    </p>
                     <Button
                       variant="ghost"
                       size="icon"
@@ -187,22 +183,7 @@ function CartPage() {
           </ul>
 
           <aside className="h-fit rounded-lg border border-border bg-card p-6">
-            <h2 className="font-display text-lg">Order summary</h2>
-            <dl className="mt-5 space-y-3 text-sm">
-              <div className="flex justify-between">
-                <dt className="text-muted-foreground">Subtotal</dt>
-                <dd className="font-semibold">{formatTzs(totalTzs)}</dd>
-              </div>
-              <div className="flex justify-between">
-                <dt className="text-muted-foreground">Delivery</dt>
-                <dd className="text-muted-foreground">Quoted on confirmation</dd>
-              </div>
-              <div className="flex justify-between border-t border-border pt-3 font-display text-base">
-                <dt>Total</dt>
-                <dd className="text-primary">{formatTzs(totalTzs)}</dd>
-              </div>
-            </dl>
-
+            <h2 className="font-display text-lg">Order</h2>
             <div className="mt-6 space-y-3">
               <div>
                 <Label htmlFor="cart-name">Your name</Label>
@@ -271,28 +252,17 @@ function CartPage() {
                 <div>
                   <p className="font-medium">{line.name}</p>
                   <p className="text-xs text-muted-foreground">
-                    {formatQuantity(line.quantity, line.unit)} × {formatTzs(line.priceTzs)}
+                    {formatQuantity(line.quantity, line.unit)}
                   </p>
                 </div>
-                <p className="whitespace-nowrap font-semibold tabular-nums">
-                  {formatTzs(line.priceTzs * line.quantity)}
-                </p>
               </li>
             ))}
           </ul>
 
           <dl className="space-y-2 text-sm">
             <div className="flex justify-between">
-              <dt className="text-muted-foreground">Subtotal</dt>
-              <dd className="font-semibold">{formatTzs(totalTzs)}</dd>
-            </div>
-            <div className="flex justify-between">
               <dt className="text-muted-foreground">Delivery</dt>
               <dd className="text-muted-foreground">Quoted on confirmation</dd>
-            </div>
-            <div className="flex justify-between border-t border-border pt-2 font-display text-base">
-              <dt>Total due now</dt>
-              <dd className="text-primary">{formatTzs(totalTzs)}</dd>
             </div>
           </dl>
 

@@ -148,8 +148,8 @@ export function CoverageCalculator({ product }: { product: Product }) {
           </h2>
           <p className="mt-1 text-sm text-muted-foreground">
             {isLinear
-              ? `Enter the total running metres for your frame and we work out the 3 m lengths. This profile is ${thicknessLabel(thicknessMm)} thick and priced ${product.unit}.`
-              : `Enter the space you are covering and we work out the pieces for you. Stock boards are 3 m long, ${toNumber(boardWidthMm)} mm wide and ${thicknessLabel(thicknessMm)} thick, priced ${product.unit}.`}
+              ? `Enter the total running metres for your frame and we work out the 3 m lengths. This profile is ${thicknessLabel(thicknessMm)} thick.`
+              : `Enter the space you are covering and we work out the pieces for you. Stock boards are 3 m long, ${toNumber(boardWidthMm)} mm wide and ${thicknessLabel(thicknessMm)} thick.`}
           </p>
         </div>
       </header>
@@ -316,18 +316,6 @@ export function CoverageCalculator({ product }: { product: Product }) {
                   : `${result.baseArea.toFixed(2)} m², each board covers ${result.coveragePerBoard.toFixed(2)} m²`}
               </dd>
             </div>
-            <div>
-              <dt className="text-xs font-semibold tracking-[0.12em] text-muted-foreground uppercase">
-                Estimated cost
-              </dt>
-              <dd className="mt-1 text-sm font-semibold">
-                {formatTzs(result.estimate)}{" "}
-                <span className="font-normal text-muted-foreground">
-                  ({result.cartQuantity} {perMeter ? "m" : "pcs"} at{" "}
-                  {formatTzs(product.price_tzs)} {product.unit})
-                </span>
-              </dd>
-            </div>
           </dl>
 
           <Button
@@ -352,9 +340,8 @@ export function CoverageCalculator({ product }: { product: Product }) {
           </Button>
           <p className="mt-3 text-xs leading-relaxed text-muted-foreground">
             {perMeter
-              ? "Per metre pricing is applied to the full 3 m lengths you will receive, including your cutting allowance."
-              : "Figures include your cutting allowance and are rounded up to whole 3 m boards."}{" "}
-            Joists, posts and fixings are quoted separately, ask us for a full bill of materials.
+              ? "Supplied in full 3 m lengths, including your cutting allowance."
+              : "Coverage is a mathematical estimate. You may need more depending on your cutting efficiency."}
           </p>
           {result.capped ? (
             <p className="mt-2 text-xs font-semibold text-muted-foreground">

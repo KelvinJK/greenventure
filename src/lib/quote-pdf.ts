@@ -8,9 +8,7 @@ export type QuotePdfData = {
   allowance: string;
   pieces: number;
   metres: number;
-  unitPrice: string;
   billed: string;
-  estimate: string;
 };
 
 const FOREST: [number, number, number] = [46, 125, 50];
@@ -57,7 +55,6 @@ export function downloadQuotePdf(data: QuotePdfData) {
     ["Cutting allowance", data.allowance],
     ["Lengths needed", `${data.pieces} x 3 m lengths`],
     ["Total metres", `${data.metres} m`],
-    ["Unit price", data.unitPrice],
     ["Billed quantity", data.billed],
   ];
 
@@ -79,22 +76,13 @@ export function downloadQuotePdf(data: QuotePdfData) {
   });
 
   y += 14;
-  doc.setFillColor(...FOREST);
-  doc.rect(left - 10, y, pageWidth - (left - 10) * 2, 54, "F");
-  doc.setTextColor(255, 255, 255);
-  doc.setFont("helvetica", "normal");
-  doc.setFontSize(10);
-  doc.text("Indicative material cost", left, y + 22);
-  doc.setFont("helvetica", "bold");
-  doc.setFontSize(17);
-  doc.text(data.estimate, left, y + 44);
 
   y += 84;
   doc.setTextColor(...GREY);
   doc.setFont("helvetica", "normal");
   doc.setFontSize(9);
   const note = doc.splitTextToSize(
-    "This estimate covers material only. Delivery, fixings, joists, substructure and site conditions are priced in the final quote. Prices are in Tanzanian shillings and valid for 14 days.",
+    "Delivery, fixings, joists, substructure and site conditions will be priced in the final quote.",
     pageWidth - left * 2,
   );
   doc.text(note, left, y);

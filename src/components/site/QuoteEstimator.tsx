@@ -120,17 +120,17 @@ export function QuoteEstimator({
 
   function summary(): string {
     if (!selected || !result) return "";
-    const lines = [
+    return [
       `Project type: ${app.label}`,
       `Material: ${selected.name} (${result.profile.widthMm} mm x ${result.profile.thicknessMm} mm profile)`,
       linear
-        ? `Running length needed: ${result.run.toFixed(2)} m`
+        ? `Linear run to cover: ${result.run.toFixed(2)} m`
         : `Area to cover: ${result.baseArea.toFixed(2)} m2${mode === "dimensions" ? ` (${toNumber(width)} m x ${toNumber(height)} m)` : ""}`,
       `Cutting allowance: ${Math.min(50, Math.max(0, toNumber(wastePct)))}%`,
-      `Estimated material: ${result.pieces} x 3 m lengths (${result.metres} m total)`,
-      `Indicative cost: ${formatTzs(result.estimate)} at ${formatTzs(selected.price_tzs)} ${selected.unit}`,
-    ];
-    return lines.join("\n");
+      `I need ${result.pieces} pieces of 3 m ${selected.name} (${result.billed} ${result.perMetre ? "m" : "pcs"} total).`,
+      `This is to cover ${result.baseArea.toFixed(2)} m² of ${app.label}.`,
+      "Please provide a final quote including delivery.",
+    ].join("\n");
   }
 
   function handleDownload() {
@@ -145,9 +145,7 @@ export function QuoteEstimator({
       allowance: `${Math.min(50, Math.max(0, toNumber(wastePct)))}%`,
       pieces: result.pieces,
       metres: result.metres,
-      unitPrice: `${formatTzs(selected.price_tzs)} ${selected.unit}`,
       billed: `${result.billed} ${result.perMetre ? "m" : "pcs"}`,
-      estimate: formatTzs(result.estimate),
     });
   }
 
@@ -160,8 +158,7 @@ export function QuoteEstimator({
         <div>
           <h2 className="font-display text-base leading-snug">Size up your project first</h2>
           <p className="mt-1 text-sm text-muted-foreground">
-            Enter the space you want to build and we work out the lengths, total metres and an
-            indicative price. Add it to your request and we will confirm the final quote with delivery.
+            Enter the space you want to build and we work out the lengths and total metres. Add it to your request and we will confirm the final quote with delivery.
           </p>
         </div>
       </header>
@@ -329,18 +326,6 @@ export function QuoteEstimator({
                   : `${result.baseArea.toFixed(2)} m², each length covers ${result.coveragePerBoard.toFixed(2)} m²`}
               </dd>
             </div>
-            <div>
-              <dt className="text-xs font-semibold tracking-[0.12em] text-muted-foreground uppercase">
-                Indicative cost
-              </dt>
-              <dd className="mt-1 text-sm font-semibold">
-                {formatTzs(result.estimate)}{" "}
-                <span className="font-normal text-muted-foreground">
-                  ({result.billed} {result.perMetre ? "m" : "pcs"} at {formatTzs(selected.price_tzs)}{" "}
-                  {selected.unit})
-                </span>
-              </dd>
-            </div>
           </dl>
 
           <div className="mt-5 grid gap-3 sm:grid-cols-2">
@@ -350,7 +335,7 @@ export function QuoteEstimator({
               className="h-11 w-full"
               onClick={() => onUseEstimate(summary())}
             >
-              Add this estimate to my request
+              Add this to my request
             </Button>
             <Button type="button" variant="secondary" className="h-11 w-full" onClick={handleDownload}>
               <FileDown className="size-4" aria-hidden="true" />
@@ -358,12 +343,12 @@ export function QuoteEstimator({
             </Button>
           </div>
           <p className="mt-3 text-xs leading-relaxed text-muted-foreground">
-            Indicative only. Delivery, fixings, joists and site conditions are priced in the final quote.
+            Delivery, fixings, joists and site conditions will be priced in the final quote.
           </p>
         </div>
       ) : (
         <p className="mt-6 text-sm text-muted-foreground">
-          Choose a material and enter your measurements to see lengths, metres and an indicative price.
+          Choose a material and enter your measurements to see lengths and metres.
         </p>
       )}
     </section>

@@ -41,15 +41,8 @@ function ShopPage() {
   const products = data as Product[];
   const { category } = Route.useSearch();
 
-  const maxPrice = useMemo(
-    () => products.reduce((max, product) => Math.max(max, product.price_tzs), 0),
-    [products],
-  );
-  const [priceCeiling, setPriceCeiling] = useState<number | null>(null);
-  const ceiling = priceCeiling ?? maxPrice;
-
   const visible = products.filter(
-    (product) => (!category || product.category === category) && product.price_tzs <= ceiling,
+    (product) => !category || product.category === category,
   );
 
   const filters = (
@@ -81,29 +74,6 @@ function ShopPage() {
             </li>
           ))}
         </ul>
-      </div>
-
-      <div>
-        <h2 className="font-display text-sm tracking-[0.14em] uppercase">Price range</h2>
-        <p className="mt-3 text-sm text-muted-foreground">Up to {formatTzs(ceiling)}</p>
-        <Slider
-          className="mt-4"
-          min={5000}
-          max={maxPrice}
-          step={5000}
-          value={[ceiling]}
-          onValueChange={(value) => setPriceCeiling(value[0])}
-          aria-label="Maximum price"
-        />
-        {priceCeiling !== null && priceCeiling < maxPrice && (
-          <Button
-            variant="ghost"
-            className="mt-3 h-11 px-3 text-sm"
-            onClick={() => setPriceCeiling(null)}
-          >
-            Reset price
-          </Button>
-        )}
       </div>
     </div>
   );
@@ -181,10 +151,6 @@ function ProductCard({ product }: { product: Product }) {
             {product.name}
           </Link>
         </h3>
-        <p className="mt-2 font-display text-lg text-primary">
-          {formatTzs(product.price_tzs)}{" "}
-          <span className="font-sans text-xs font-semibold text-muted-foreground">{product.unit}</span>
-        </p>
         <p className="mt-3 flex-1 text-sm leading-relaxed text-muted-foreground">
           {product.short_description}
         </p>

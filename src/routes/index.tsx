@@ -264,9 +264,6 @@ function HomePage() {
               />
               <div className="p-5">
                 <h3 className="font-display text-base leading-snug">{product.name}</h3>
-                <p className="mt-2 text-sm font-semibold text-primary">
-                  {new Intl.NumberFormat("en-US").format(product.price_tzs)} TZS {product.unit}
-                </p>
               </div>
             </Link>
           ))}
