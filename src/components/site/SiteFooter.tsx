@@ -156,7 +156,7 @@ export function SiteFooter() {
               </Link>
             </li>
             <li>
-              <Link to="/donate" className="transition-colors hover:text-brand-accent">
+              <Link to="/our-impact" className="transition-colors hover:text-brand-accent">
                 The Education Initiative
               </Link>
             </li>
