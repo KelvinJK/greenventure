@@ -54,7 +54,7 @@ function SustainabilityPage() {
         </p>
         <div className="pt-2">
           <Button asChild className="h-11 px-5">
-            <Link to="/donate">Donate a desk</Link>
+            <Link to="/our-impact">Donate a desk</Link>
           </Button>
         </div>
       </LegalSection>
