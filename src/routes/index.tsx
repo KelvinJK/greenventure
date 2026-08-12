@@ -78,7 +78,7 @@ function HomePage() {
 
   return (
     <>
-      <section className="relative flex min-h-[92svh] items-center overflow-hidden">
+      <section className="relative flex min-h-[100svh] items-center justify-center overflow-hidden">
         <video
           className="absolute inset-0 size-full object-cover"
           src={heroVideo.url}
@@ -90,41 +90,58 @@ function HomePage() {
           preload="auto"
           aria-hidden="true"
         />
-        <div className="absolute inset-0 bg-charcoal/40" aria-hidden="true" />
+        <div className="absolute inset-0 bg-charcoal/55" aria-hidden="true" />
         <div
-          className="absolute inset-0 bg-gradient-to-t from-charcoal/70 via-transparent to-charcoal/25"
+          className="absolute inset-0 bg-gradient-to-t from-charcoal/80 via-charcoal/20 to-charcoal/45"
           aria-hidden="true"
         />
 
-        <div className="relative mx-auto flex w-full max-w-7xl flex-col px-4 py-24 sm:px-6 lg:px-8">
-          <div className="deck-fade-up max-w-3xl">
-            <h1 className="font-display text-[clamp(2rem,7vw,4.25rem)] leading-[1.05] text-charcoal-foreground">
-              TURNING PLASTIC TRASH TO TREASURE
-            </h1>
-            <p className="mt-6 max-w-2xl text-[clamp(1rem,2.4vw,1.2rem)] leading-relaxed text-charcoal-foreground/85">
-              We transform plastic waste into premium decking, furniture, and fencing that is termite-proof,
-              weatherproof, and maintenance-free.
-            </p>
-            <div className="mt-9 flex flex-wrap gap-3">
-              <Button asChild className="h-11 rounded-md px-7 text-base">
-                <Link to="/shop">Shop Now</Link>
-              </Button>
-              <Button
-                asChild
-                variant="outline"
-                className="h-11 rounded-md border-charcoal-foreground/70 bg-transparent px-7 text-base text-charcoal-foreground hover:bg-charcoal-foreground/10 hover:text-charcoal-foreground"
-              >
-                <Link to="/our-work">Our Work</Link>
-              </Button>
-            </div>
+        <div className="relative mx-auto flex w-full max-w-5xl flex-col items-center px-4 py-28 text-center sm:px-6 lg:px-8">
+          <img
+            src="/media/green-venture-logo.webp"
+            alt="Green Venture Tanzania"
+            width={112}
+            height={112}
+            className="hero-enter size-20 object-contain sm:size-28"
+          />
+
+          <h1 className="hero-enter mt-8 font-display text-[clamp(2.1rem,8vw,5.25rem)] leading-[0.95] text-charcoal-foreground [animation-delay:60ms]">
+            Turning Plastic Trash
+            <span className="block">To Treasure</span>
+          </h1>
+
+          <p className="hero-enter mt-6 flex flex-wrap items-center justify-center gap-x-3 gap-y-2 text-[0.7rem] font-semibold tracking-[0.22em] text-charcoal-foreground/85 uppercase sm:text-xs [animation-delay:120ms]">
+            {["Decking", "Furniture", "Fencing", "Structural Lumber"].map((item, i) => (
+              <span key={item} className="flex items-center gap-3">
+                {i > 0 && <span className="size-1 rounded-full bg-charcoal-foreground/50" aria-hidden="true" />}
+                {item}
+              </span>
+            ))}
+          </p>
+
+          <div className="hero-enter mt-10 flex flex-wrap justify-center gap-3 [animation-delay:180ms]">
+            <Button
+              asChild
+              variant="outline"
+              className="h-12 rounded-none border-charcoal-foreground/70 bg-transparent px-8 text-xs font-semibold tracking-[0.2em] text-charcoal-foreground uppercase transition-transform duration-150 ease-out hover:-translate-y-px hover:bg-charcoal-foreground hover:text-charcoal active:scale-[0.98]"
+            >
+              <Link to="/shop">Shop Now</Link>
+            </Button>
+            <Button
+              asChild
+              variant="outline"
+              className="h-12 rounded-none border-charcoal-foreground/70 bg-transparent px-8 text-xs font-semibold tracking-[0.2em] text-charcoal-foreground uppercase transition-transform duration-150 ease-out hover:-translate-y-px hover:bg-charcoal-foreground hover:text-charcoal active:scale-[0.98]"
+            >
+              <Link to="/our-work">Our Work</Link>
+            </Button>
           </div>
 
-          <p className="mt-16 text-xs font-semibold tracking-[0.16em] text-charcoal-foreground/70 uppercase sm:mt-24">
-            Award-Winning Circular Economy Innovation <span className="mx-2 opacity-40">|</span> 1,200+ Tons
-            Recycled
+          <p className="hero-enter mt-14 text-[0.6rem] font-semibold tracking-[0.24em] text-charcoal-foreground/65 uppercase sm:text-[0.65rem] [animation-delay:240ms]">
+            Award-Winning Circular Innovation <span className="mx-2 opacity-40">|</span> 1,200+ Tons Recycled
           </p>
         </div>
       </section>
+
 
       <section className="mx-auto w-full max-w-7xl px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
         <div className="max-w-2xl">

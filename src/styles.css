@@ -144,6 +144,14 @@
   --sidebar-ring: oklch(0.685 0.166 145.6);
 }
 
+:root {
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in: cubic-bezier(0.7, 0, 0.84, 0);
+  --dur-micro: 150ms;
+  --dur-std: 250ms;
+  --dur-screen: 400ms;
+}
+
 @layer base {
   * {
     border-color: var(--color-border);
@@ -163,10 +171,26 @@
     font-weight: 700;
     letter-spacing: -0.015em;
   }
+
+  /* Editorial register: display headings are set in wide-tracked caps. */
+  h1,
+  h2 {
+    text-transform: uppercase;
+    letter-spacing: 0.01em;
+  }
+}
+
+/* Thin uppercase label used above section headings. */
+@utility eyebrow {
+  font-family: var(--font-sans);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
 }
 
 @utility deck-fade-up {
-  animation: deck-fade-up 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation: deck-fade-up 0.9s var(--ease-out) both;
 }
 
 @keyframes deck-fade-up {
@@ -179,3 +203,17 @@
     transform: translateY(0);
   }
 }
+
+@utility hero-enter {
+  animation: deck-fade-up var(--dur-screen) var(--ease-out) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
