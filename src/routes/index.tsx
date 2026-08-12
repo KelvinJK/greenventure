@@ -136,7 +136,7 @@ function HomePage() {
             </Button>
           </div>
 
-          <p className="hero-enter absolute bottom-8 left-1/2 -translate-x-1/2 text-[0.6rem] font-semibold tracking-[0.24em] text-charcoal-foreground/65 uppercase sm:text-[0.65rem] [animation-delay:240ms]">
+          <p className="hero-enter mt-14 text-[0.6rem] font-semibold tracking-[0.24em] text-charcoal-foreground/65 uppercase sm:text-[0.65rem] [animation-delay:240ms]">
             Award-Winning Circular Innovation <span className="mx-2 opacity-40">|</span> 1,200+ Tons Recycled
           </p>
         </div>
