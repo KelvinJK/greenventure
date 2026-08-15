@@ -102,8 +102,11 @@ export type Database = {
           customer_phone: string | null
           description: string | null
           id: string
+          notes: string | null
           order_type: string
           payment_reference: string | null
+          product_summary: string | null
+          reference: string | null
           status: string
           total_tzs: number
           updated_at: string
@@ -117,8 +120,11 @@ export type Database = {
           customer_phone?: string | null
           description?: string | null
           id?: string
+          notes?: string | null
           order_type?: string
           payment_reference?: string | null
+          product_summary?: string | null
+          reference?: string | null
           status?: string
           total_tzs: number
           updated_at?: string
@@ -132,8 +138,11 @@ export type Database = {
           customer_phone?: string | null
           description?: string | null
           id?: string
+          notes?: string | null
           order_type?: string
           payment_reference?: string | null
+          product_summary?: string | null
+          reference?: string | null
           status?: string
           total_tzs?: number
           updated_at?: string
@@ -148,10 +157,13 @@ export type Database = {
           image_key: string
           long_description: string
           name: string
+          price_note: string | null
           price_tzs: number
+          product_group: string | null
           short_description: string
           slug: string
           sort_order: number
+          specs: Json
           unit: string
         }
         Insert: {
@@ -161,10 +173,13 @@ export type Database = {
           image_key: string
           long_description?: string
           name: string
+          price_note?: string | null
           price_tzs: number
+          product_group?: string | null
           short_description: string
           slug: string
           sort_order?: number
+          specs?: Json
           unit?: string
         }
         Update: {
@@ -174,11 +189,53 @@ export type Database = {
           image_key?: string
           long_description?: string
           name?: string
+          price_note?: string | null
           price_tzs?: number
+          product_group?: string | null
           short_description?: string
           slug?: string
           sort_order?: number
+          specs?: Json
           unit?: string
+        }
+        Relationships: []
+      }
+      projects: {
+        Row: {
+          client_name: string
+          created_at: string
+          featured: boolean
+          id: string
+          image_keys: string[]
+          location: string
+          result: string
+          scope: string
+          slug: string
+          sort_order: number
+        }
+        Insert: {
+          client_name: string
+          created_at?: string
+          featured?: boolean
+          id?: string
+          image_keys?: string[]
+          location: string
+          result: string
+          scope: string
+          slug: string
+          sort_order?: number
+        }
+        Update: {
+          client_name?: string
+          created_at?: string
+          featured?: boolean
+          id?: string
+          image_keys?: string[]
+          location?: string
+          result?: string
+          scope?: string
+          slug?: string
+          sort_order?: number
         }
         Relationships: []
       }
@@ -186,31 +243,55 @@ export type Database = {
         Row: {
           company: string | null
           created_at: string
+          drawing_path: string | null
           email: string
           id: string
-          message: string
+          installation: string | null
+          location: string | null
+          message: string | null
           name: string
           phone: string | null
+          product: string | null
+          quantity: number | null
+          quantity_unit: string | null
+          reference: string | null
+          timeline: string | null
           updated_at: string
         }
         Insert: {
           company?: string | null
           created_at?: string
+          drawing_path?: string | null
           email: string
           id?: string
-          message: string
+          installation?: string | null
+          location?: string | null
+          message?: string | null
           name: string
           phone?: string | null
+          product?: string | null
+          quantity?: number | null
+          quantity_unit?: string | null
+          reference?: string | null
+          timeline?: string | null
           updated_at?: string
         }
         Update: {
           company?: string | null
           created_at?: string
+          drawing_path?: string | null
           email?: string
           id?: string
-          message?: string
+          installation?: string | null
+          location?: string | null
+          message?: string | null
           name?: string
           phone?: string | null
+          product?: string | null
+          quantity?: number | null
+          quantity_unit?: string | null
+          reference?: string | null
+          timeline?: string | null
           updated_at?: string
         }
         Relationships: []
@@ -220,7 +301,7 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      next_gvt_reference: { Args: never; Returns: string }
     }
     Enums: {
       [_ in never]: never
