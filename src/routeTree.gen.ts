@@ -21,6 +21,7 @@ import { Route as OurWorkRouteImport } from './routes/our-work'
 import { Route as PaymentRouteImport } from './routes/payment'
 import { Route as PaymentSecurityRouteImport } from './routes/payment-security'
 import { Route as PrivacyPolicyRouteImport } from './routes/privacy-policy'
+import { Route as ProductsRouteImport } from './routes/products'
 import { Route as QuoteRouteImport } from './routes/quote'
 import { Route as ReturnPolicyRouteImport } from './routes/return-policy'
 import { Route as ShopRouteImport } from './routes/shop'
@@ -91,6 +92,11 @@ const PaymentSecurityRoute = PaymentSecurityRouteImport.update({
 const PrivacyPolicyRoute = PrivacyPolicyRouteImport.update({
   id: '/privacy-policy',
   path: '/privacy-policy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProductsRoute = ProductsRouteImport.update({
+  id: '/products',
+  path: '/products',
   getParentRoute: () => rootRouteImport,
 } as any)
 const QuoteRoute = QuoteRouteImport.update({
@@ -165,6 +171,7 @@ export interface FileRoutesByFullPath {
   '/payment': typeof PaymentRoute
   '/payment-security': typeof PaymentSecurityRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
+  '/products': typeof ProductsRoute
   '/quote': typeof QuoteRoute
   '/return-policy': typeof ReturnPolicyRoute
   '/shop': typeof ShopRoute
@@ -190,6 +197,7 @@ export interface FileRoutesByTo {
   '/payment': typeof PaymentRoute
   '/payment-security': typeof PaymentSecurityRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
+  '/products': typeof ProductsRoute
   '/quote': typeof QuoteRoute
   '/return-policy': typeof ReturnPolicyRoute
   '/shop': typeof ShopRoute
@@ -216,6 +224,7 @@ export interface FileRoutesById {
   '/payment': typeof PaymentRoute
   '/payment-security': typeof PaymentSecurityRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
+  '/products': typeof ProductsRoute
   '/quote': typeof QuoteRoute
   '/return-policy': typeof ReturnPolicyRoute
   '/shop': typeof ShopRoute
@@ -243,6 +252,7 @@ export interface FileRouteTypes {
     | '/payment'
     | '/payment-security'
     | '/privacy-policy'
+    | '/products'
     | '/quote'
     | '/return-policy'
     | '/shop'
@@ -268,6 +278,7 @@ export interface FileRouteTypes {
     | '/payment'
     | '/payment-security'
     | '/privacy-policy'
+    | '/products'
     | '/quote'
     | '/return-policy'
     | '/shop'
@@ -293,6 +304,7 @@ export interface FileRouteTypes {
     | '/payment'
     | '/payment-security'
     | '/privacy-policy'
+    | '/products'
     | '/quote'
     | '/return-policy'
     | '/shop'
@@ -319,6 +331,7 @@ export interface RootRouteChildren {
   PaymentRoute: typeof PaymentRoute
   PaymentSecurityRoute: typeof PaymentSecurityRoute
   PrivacyPolicyRoute: typeof PrivacyPolicyRoute
+  ProductsRoute: typeof ProductsRoute
   QuoteRoute: typeof QuoteRoute
   ReturnPolicyRoute: typeof ReturnPolicyRoute
   ShopRoute: typeof ShopRoute
@@ -418,6 +431,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PrivacyPolicyRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/products': {
+      id: '/products'
+      path: '/products'
+      fullPath: '/products'
+      preLoaderRoute: typeof ProductsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/quote': {
       id: '/quote'
       path: '/quote'
@@ -511,6 +531,7 @@ const rootRouteChildren: RootRouteChildren = {
   PaymentRoute: PaymentRoute,
   PaymentSecurityRoute: PaymentSecurityRoute,
   PrivacyPolicyRoute: PrivacyPolicyRoute,
+  ProductsRoute: ProductsRoute,
   QuoteRoute: QuoteRoute,
   ReturnPolicyRoute: ReturnPolicyRoute,
   ShopRoute: ShopRoute,
