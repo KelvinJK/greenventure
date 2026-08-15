@@ -1,36 +1,54 @@
-## Green Venture Tanzania — build plan
+# Green Venture Limited — full site rebuild
 
-### Brand foundation
-- Palette as tokens in `src/styles.css` (oklch): Forest Green #2E7D32 primary, Bright Green #4CAF50 accent, Off-White #FAFAFA, Dark Charcoal #1A1A1A for contrast sections. No hardcoded color classes anywhere.
-- Typography: Poppins 700 headings, Open Sans 400 body, loaded via a `<link>` in the root route head.
-- Mobile-first, generous whitespace, large imagery, restrained fade/rise motion.
-- Shared header (logo left, links center: Shop, About, Donate, Contact; right: "Get a Quote" solid green + cart icon with live item count) and footer in `src/routes/__root.tsx`. Header collapses to a hamburger sheet below 768px; all tap targets ≥44px.
+A complete rebuild of the site around the new brief: premium building-materials brand, quote-led, Arusha collection-only, with the existing shop and mobile-money checkout retained.
 
-### Pages
-- `/` — cinematic hero with AI-generated autoplaying muted looping video of recycled decking/outdoor furniture, 40% dark overlay, fade-in on load, H1 + sub-headline + "Shop Decking" (solid) and "Get a Custom Quote" (outline) CTAs, trust line at the bottom. Then: 3-card product showcase (Decking / Furniture / Lumber) with hover shadow and "Learn More" links, and a "Why Choose Recycled Plastic?" two-column section on off-white — 4 icon benefits left, green-check vs red-X comparison table (Lifespan, Maintenance, Weather Resistance, Environmental Impact) right.
-- `/shop` — sidebar with category filter (Decking, Furniture, Fencing, Lumber) + price-range slider; responsive product grid with image, title, TZS price, one-line description, bright-green "Add to Cart" with clear hover state. Sidebar becomes a filter drawer on mobile.
-- `/product/$id` — split layout: main image + 3 thumbnails left; title, large price, two description paragraphs, quantity stepper, full-width Add to Cart, "Request Custom Quote" link right.
-- `/cart` — line items, quantities, TZS totals, "Proceed to Checkout" with loading spinner state.
-- `/donate` — hero image of a Tanzanian classroom with the overlay headline, intro paragraph, 3 tier cards (One Desk TZS 150,000 / Classroom Set TZS 1,500,000 / Corporate Partner custom amount), selection state, then "Donate Now".
-- `/about`, `/contact` (quote request form) — kept concise so nav has no dead links.
-- `/success` — thank-you page with order summary, reached after payment.
-- Each route gets its own `head()` with unique title/description/OG tags.
+## Decisions carried in
 
-Images: generated for hero video, product shots, and the donate hero; no lorem ipsum.
+- Full rebuild: new routes, new content, new visual language.
+- Keep your real photographs; labelled placeholder blocks only where no photo exists (safari-camp hero, project case studies, panels, cladding/bathroom units, solutions diagrams, professionals downloads).
+- Replace the theme with the brief palette and Playfair Display + Open Sans.
+- Keep the working Snippe mobile-money checkout, and add the bank transfer / mobile money instruction page.
 
-### Backend and payments
-- Enable Lovable Cloud (database + secrets). Tables: `products`, `orders`, `order_items`, `donations` — RLS on, explicit grants, public read for products, seeded with the real catalog and donation tiers via migration.
-- Checkout runs through this stack's server layer (not Supabase Edge Functions):
-  - A server function `createPaymentSession` builds the order (status `pending`, server-recalculated totals from DB prices) and calls Snippe.sh to create a mobile-money payment session, returning `checkout_url`.
-  - A public server route `/api/public/snippe-webhook` verifies the `X-Webhook-Signature` HMAC, handles `payment.completed`, and flips the order/donation to `completed`.
-  - The same session function serves both shop checkout and donations (amount + description).
-- Since the Snippe key isn't ready yet: the flow is fully built but the payment call returns a clear "payments not yet configured" state, and the UI shows a friendly notice instead of redirecting. Once you paste `SNIPPE_API_KEY` and `SNIPPE_WEBHOOK_SECRET`, live checkout works with no code changes. Cart state persists in localStorage meanwhile.
+## Design system
 
-### Technical notes
-- TanStack Start file routes; `createServerFn` for app logic, a server route only for the webhook. Snippe credentials live in server-side secrets only, never in frontend code.
-- Snippe's exact API surface will be confirmed against their docs before wiring; the session-create and webhook-verify calls are isolated in one server-only module so adjusting to their spec is a single-file change.
-- Cart context + `sonner` toasts; `<Toaster />` mounted once in the root route.
-- Final pass: hamburger nav, 44px targets, hero video aspect ratio on mobile, fluid heading sizes so H1/H2 don't overflow.
+New tokens in `src/styles.css` (OKLCH equivalents of the brief hex values): forest #0F3D24, green #1A5E38, moss #8CB369, lime #B8D97A, terracotta #C4703A, bone #FAF8F3, charcoal #1F1E1B. Bone page background, charcoal body text, green primary buttons, forest footer and impact bands. Playfair Display for headings, Open Sans for body, loaded via `<link>` in the root route. Generous section spacing, large heading scale, no gradients, no recycling icons.
 
-### What I'll need from you later
-Snippe API key (`snp_...`) and webhook signing secret, plus real product photos/prices if you want to replace the generated placeholders.
+A `<Photo>` component renders either a real image (with alt text) or a labelled placeholder card showing the intended shot description and aspect ratio.
+
+## Routes
+
+- `/` — full-bleed hero ("Timber that never rots." / subline / See the products + Request a quote), value strip (No maintenance · No termites · No splinters), product grid, six-step "How it's made", three featured projects, forest impact band, closing CTA with WhatsApp.
+- `/products` overview plus `/products/lumber`, `/decking`, `/prefabricated-panels`, `/cladding-and-bathroom-units`, `/furniture`, `/other`. Each: hero, one paragraph, spec list, warranty terms, collection notice, "Prices exclude 18% VAT", quote button that pre-fills the product.
+- `/solutions` — the four decking purchase routes plus wall cladding, each with a diagram placeholder.
+- `/projects` — the ten named case studies, from Supabase. Corporate logo strip left commented out in code.
+- `/sustainability` — the loop, collector network, impact figures, and the impact calculator.
+- `/about` — founding story, Edgar Edmund Tarimo, team, factory, the five certifications with reference numbers.
+- `/professionals` — spec sheets, profile drawings, fixing and span notes (placeholder download links), material estimator.
+- `/quote`, `/order-status`, `/payment`, `/contact`.
+- Retained: `/shop`, `/product/$slug`, `/cart`, `/success`, and the legal pages (privacy, terms, returns, cookies, payment security).
+- Removed/replaced: `/our-work`, `/our-impact`, `/about` in their current form; `/portfolio` content folds into `/projects`.
+
+## Commercial rules enforced everywhere
+
+Prices in TSH, ex-VAT, with "Prices exclude 18% VAT" beside every price. "Collection only from the Njiro yard, Arusha" on every product page, the quote form and contact page — no delivery or shipping wording anywhere. "Prices are indicative and subject to confirmation on a written quotation."
+
+## Impact calculator
+
+Input linear metres of lumber or m² of decking; output kilograms of plastic diverted using 2.5 kg/lm and 12.5 lm per m². The arithmetic is printed underneath. Labelled an estimate. No CO₂ conversion.
+
+## Unconfirmed content
+
+Rendered as visible `[CONFIRM: …]` blocks, not filler: decking price per m²; furniture price list; tonnes processed (1,800+ or 2,000+); bank account name and number; mobile money till numbers; social media URLs (icons omitted entirely until supplied).
+
+## Global
+
+Sticky header (logo left, nav centre, Request a quote right, mobile drawer), floating WhatsApp button with pre-filled message to +255 748 576 025, forest footer with address, contact, quick links, certifications strip, company no. 22443, VAT 100-12835-S, copyright. Per-page title/description/OG tags, LocalBusiness and Product JSON-LD, sitemap.xml, robots.txt. Semantic headings, alt text, visible focus rings, AA contrast. No analytics or tracking scripts.
+
+## Technical notes
+
+- Database: extend `products` with the fields the new product pages need (spec list, unit, profile dimensions, weight per lm); add `projects` (name, location, scope, result, images, sort order); add `orders` reference lookup fields (reference, client name, product summary, status enum, notes, updated_at); extend `quote_requests` with company, location, product, quantity + unit, installation, timeline, reference. Every new table gets GRANTs plus RLS: public read for products/projects, insert-only for quote requests, and no client read on orders — status lookup goes through a server function that returns only the safe fields for an exact reference match.
+- Reference numbers generated server-side in `GVT-YYMM-####` format.
+- Drawing uploads go to a private storage bucket, written from the server function.
+- `/products/*` pages are separate route files (not hash sections) so each gets its own metadata.
+- Payment page keeps a commented Flutterwave / DPO Pay stub; the existing Snippe checkout and webhook stay untouched.
+- Performance for slow 3G: existing photos served from `public/media`, `loading="lazy"` and explicit width/height on non-hero images, hero video poster-first with `preload="none"` on small screens.
