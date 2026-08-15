@@ -18,6 +18,7 @@ import { Route as McpRouteImport } from './routes/mcp'
 import { Route as OrderStatusRouteImport } from './routes/order-status'
 import { Route as OurImpactRouteImport } from './routes/our-impact'
 import { Route as OurWorkRouteImport } from './routes/our-work'
+import { Route as PaymentRouteImport } from './routes/payment'
 import { Route as PaymentSecurityRouteImport } from './routes/payment-security'
 import { Route as PrivacyPolicyRouteImport } from './routes/privacy-policy'
 import { Route as QuoteRouteImport } from './routes/quote'
@@ -75,6 +76,11 @@ const OurImpactRoute = OurImpactRouteImport.update({
 const OurWorkRoute = OurWorkRouteImport.update({
   id: '/our-work',
   path: '/our-work',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PaymentRoute = PaymentRouteImport.update({
+  id: '/payment',
+  path: '/payment',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PaymentSecurityRoute = PaymentSecurityRouteImport.update({
@@ -156,6 +162,7 @@ export interface FileRoutesByFullPath {
   '/order-status': typeof OrderStatusRoute
   '/our-impact': typeof OurImpactRoute
   '/our-work': typeof OurWorkRoute
+  '/payment': typeof PaymentRoute
   '/payment-security': typeof PaymentSecurityRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/quote': typeof QuoteRoute
@@ -180,6 +187,7 @@ export interface FileRoutesByTo {
   '/order-status': typeof OrderStatusRoute
   '/our-impact': typeof OurImpactRoute
   '/our-work': typeof OurWorkRoute
+  '/payment': typeof PaymentRoute
   '/payment-security': typeof PaymentSecurityRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/quote': typeof QuoteRoute
@@ -205,6 +213,7 @@ export interface FileRoutesById {
   '/order-status': typeof OrderStatusRoute
   '/our-impact': typeof OurImpactRoute
   '/our-work': typeof OurWorkRoute
+  '/payment': typeof PaymentRoute
   '/payment-security': typeof PaymentSecurityRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/quote': typeof QuoteRoute
@@ -231,6 +240,7 @@ export interface FileRouteTypes {
     | '/order-status'
     | '/our-impact'
     | '/our-work'
+    | '/payment'
     | '/payment-security'
     | '/privacy-policy'
     | '/quote'
@@ -255,6 +265,7 @@ export interface FileRouteTypes {
     | '/order-status'
     | '/our-impact'
     | '/our-work'
+    | '/payment'
     | '/payment-security'
     | '/privacy-policy'
     | '/quote'
@@ -279,6 +290,7 @@ export interface FileRouteTypes {
     | '/order-status'
     | '/our-impact'
     | '/our-work'
+    | '/payment'
     | '/payment-security'
     | '/privacy-policy'
     | '/quote'
@@ -304,6 +316,7 @@ export interface RootRouteChildren {
   OrderStatusRoute: typeof OrderStatusRoute
   OurImpactRoute: typeof OurImpactRoute
   OurWorkRoute: typeof OurWorkRoute
+  PaymentRoute: typeof PaymentRoute
   PaymentSecurityRoute: typeof PaymentSecurityRoute
   PrivacyPolicyRoute: typeof PrivacyPolicyRoute
   QuoteRoute: typeof QuoteRoute
@@ -382,6 +395,13 @@ declare module '@tanstack/react-router' {
       path: '/our-work'
       fullPath: '/our-work'
       preLoaderRoute: typeof OurWorkRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/payment': {
+      id: '/payment'
+      path: '/payment'
+      fullPath: '/payment'
+      preLoaderRoute: typeof PaymentRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/payment-security': {
@@ -488,6 +508,7 @@ const rootRouteChildren: RootRouteChildren = {
   OrderStatusRoute: OrderStatusRoute,
   OurImpactRoute: OurImpactRoute,
   OurWorkRoute: OurWorkRoute,
+  PaymentRoute: PaymentRoute,
   PaymentSecurityRoute: PaymentSecurityRoute,
   PrivacyPolicyRoute: PrivacyPolicyRoute,
   QuoteRoute: QuoteRoute,
