@@ -15,10 +15,14 @@ import { Route as CartRouteImport } from './routes/cart'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as CookiePolicyRouteImport } from './routes/cookie-policy'
 import { Route as McpRouteImport } from './routes/mcp'
+import { Route as OrderStatusRouteImport } from './routes/order-status'
 import { Route as OurImpactRouteImport } from './routes/our-impact'
 import { Route as OurWorkRouteImport } from './routes/our-work'
+import { Route as PaymentRouteImport } from './routes/payment'
 import { Route as PaymentSecurityRouteImport } from './routes/payment-security'
 import { Route as PrivacyPolicyRouteImport } from './routes/privacy-policy'
+import { Route as ProductsRouteImport } from './routes/products'
+import { Route as QuoteRouteImport } from './routes/quote'
 import { Route as ReturnPolicyRouteImport } from './routes/return-policy'
 import { Route as ShopRouteImport } from './routes/shop'
 import { Route as SuccessRouteImport } from './routes/success'
@@ -60,6 +64,11 @@ const McpRoute = McpRouteImport.update({
   path: '/mcp',
   getParentRoute: () => rootRouteImport,
 } as any)
+const OrderStatusRoute = OrderStatusRouteImport.update({
+  id: '/order-status',
+  path: '/order-status',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const OurImpactRoute = OurImpactRouteImport.update({
   id: '/our-impact',
   path: '/our-impact',
@@ -70,6 +79,11 @@ const OurWorkRoute = OurWorkRouteImport.update({
   path: '/our-work',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PaymentRoute = PaymentRouteImport.update({
+  id: '/payment',
+  path: '/payment',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PaymentSecurityRoute = PaymentSecurityRouteImport.update({
   id: '/payment-security',
   path: '/payment-security',
@@ -78,6 +92,16 @@ const PaymentSecurityRoute = PaymentSecurityRouteImport.update({
 const PrivacyPolicyRoute = PrivacyPolicyRouteImport.update({
   id: '/privacy-policy',
   path: '/privacy-policy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProductsRoute = ProductsRouteImport.update({
+  id: '/products',
+  path: '/products',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const QuoteRoute = QuoteRouteImport.update({
+  id: '/quote',
+  path: '/quote',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ReturnPolicyRoute = ReturnPolicyRouteImport.update({
@@ -141,10 +165,14 @@ export interface FileRoutesByFullPath {
   '/contact': typeof ContactRoute
   '/cookie-policy': typeof CookiePolicyRoute
   '/mcp': typeof McpRoute
+  '/order-status': typeof OrderStatusRoute
   '/our-impact': typeof OurImpactRoute
   '/our-work': typeof OurWorkRoute
+  '/payment': typeof PaymentRoute
   '/payment-security': typeof PaymentSecurityRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
+  '/products': typeof ProductsRoute
+  '/quote': typeof QuoteRoute
   '/return-policy': typeof ReturnPolicyRoute
   '/shop': typeof ShopRoute
   '/success': typeof SuccessRoute
@@ -163,10 +191,14 @@ export interface FileRoutesByTo {
   '/contact': typeof ContactRoute
   '/cookie-policy': typeof CookiePolicyRoute
   '/mcp': typeof McpRoute
+  '/order-status': typeof OrderStatusRoute
   '/our-impact': typeof OurImpactRoute
   '/our-work': typeof OurWorkRoute
+  '/payment': typeof PaymentRoute
   '/payment-security': typeof PaymentSecurityRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
+  '/products': typeof ProductsRoute
+  '/quote': typeof QuoteRoute
   '/return-policy': typeof ReturnPolicyRoute
   '/shop': typeof ShopRoute
   '/success': typeof SuccessRoute
@@ -186,10 +218,14 @@ export interface FileRoutesById {
   '/contact': typeof ContactRoute
   '/cookie-policy': typeof CookiePolicyRoute
   '/mcp': typeof McpRoute
+  '/order-status': typeof OrderStatusRoute
   '/our-impact': typeof OurImpactRoute
   '/our-work': typeof OurWorkRoute
+  '/payment': typeof PaymentRoute
   '/payment-security': typeof PaymentSecurityRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
+  '/products': typeof ProductsRoute
+  '/quote': typeof QuoteRoute
   '/return-policy': typeof ReturnPolicyRoute
   '/shop': typeof ShopRoute
   '/success': typeof SuccessRoute
@@ -210,10 +246,14 @@ export interface FileRouteTypes {
     | '/contact'
     | '/cookie-policy'
     | '/mcp'
+    | '/order-status'
     | '/our-impact'
     | '/our-work'
+    | '/payment'
     | '/payment-security'
     | '/privacy-policy'
+    | '/products'
+    | '/quote'
     | '/return-policy'
     | '/shop'
     | '/success'
@@ -232,10 +272,14 @@ export interface FileRouteTypes {
     | '/contact'
     | '/cookie-policy'
     | '/mcp'
+    | '/order-status'
     | '/our-impact'
     | '/our-work'
+    | '/payment'
     | '/payment-security'
     | '/privacy-policy'
+    | '/products'
+    | '/quote'
     | '/return-policy'
     | '/shop'
     | '/success'
@@ -254,10 +298,14 @@ export interface FileRouteTypes {
     | '/contact'
     | '/cookie-policy'
     | '/mcp'
+    | '/order-status'
     | '/our-impact'
     | '/our-work'
+    | '/payment'
     | '/payment-security'
     | '/privacy-policy'
+    | '/products'
+    | '/quote'
     | '/return-policy'
     | '/shop'
     | '/success'
@@ -277,10 +325,14 @@ export interface RootRouteChildren {
   ContactRoute: typeof ContactRoute
   CookiePolicyRoute: typeof CookiePolicyRoute
   McpRoute: typeof McpRoute
+  OrderStatusRoute: typeof OrderStatusRoute
   OurImpactRoute: typeof OurImpactRoute
   OurWorkRoute: typeof OurWorkRoute
+  PaymentRoute: typeof PaymentRoute
   PaymentSecurityRoute: typeof PaymentSecurityRoute
   PrivacyPolicyRoute: typeof PrivacyPolicyRoute
+  ProductsRoute: typeof ProductsRoute
+  QuoteRoute: typeof QuoteRoute
   ReturnPolicyRoute: typeof ReturnPolicyRoute
   ShopRoute: typeof ShopRoute
   SuccessRoute: typeof SuccessRoute
@@ -337,6 +389,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof McpRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/order-status': {
+      id: '/order-status'
+      path: '/order-status'
+      fullPath: '/order-status'
+      preLoaderRoute: typeof OrderStatusRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/our-impact': {
       id: '/our-impact'
       path: '/our-impact'
@@ -351,6 +410,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof OurWorkRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/payment': {
+      id: '/payment'
+      path: '/payment'
+      fullPath: '/payment'
+      preLoaderRoute: typeof PaymentRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/payment-security': {
       id: '/payment-security'
       path: '/payment-security'
@@ -363,6 +429,20 @@ declare module '@tanstack/react-router' {
       path: '/privacy-policy'
       fullPath: '/privacy-policy'
       preLoaderRoute: typeof PrivacyPolicyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/products': {
+      id: '/products'
+      path: '/products'
+      fullPath: '/products'
+      preLoaderRoute: typeof ProductsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/quote': {
+      id: '/quote'
+      path: '/quote'
+      fullPath: '/quote'
+      preLoaderRoute: typeof QuoteRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/return-policy': {
@@ -445,10 +525,14 @@ const rootRouteChildren: RootRouteChildren = {
   ContactRoute: ContactRoute,
   CookiePolicyRoute: CookiePolicyRoute,
   McpRoute: McpRoute,
+  OrderStatusRoute: OrderStatusRoute,
   OurImpactRoute: OurImpactRoute,
   OurWorkRoute: OurWorkRoute,
+  PaymentRoute: PaymentRoute,
   PaymentSecurityRoute: PaymentSecurityRoute,
   PrivacyPolicyRoute: PrivacyPolicyRoute,
+  ProductsRoute: ProductsRoute,
+  QuoteRoute: QuoteRoute,
   ReturnPolicyRoute: ReturnPolicyRoute,
   ShopRoute: ShopRoute,
   SuccessRoute: SuccessRoute,
