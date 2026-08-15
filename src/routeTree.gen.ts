@@ -15,6 +15,7 @@ import { Route as CartRouteImport } from './routes/cart'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as CookiePolicyRouteImport } from './routes/cookie-policy'
 import { Route as McpRouteImport } from './routes/mcp'
+import { Route as OrderStatusRouteImport } from './routes/order-status'
 import { Route as OurImpactRouteImport } from './routes/our-impact'
 import { Route as OurWorkRouteImport } from './routes/our-work'
 import { Route as PaymentSecurityRouteImport } from './routes/payment-security'
@@ -59,6 +60,11 @@ const CookiePolicyRoute = CookiePolicyRouteImport.update({
 const McpRoute = McpRouteImport.update({
   id: '/mcp',
   path: '/mcp',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OrderStatusRoute = OrderStatusRouteImport.update({
+  id: '/order-status',
+  path: '/order-status',
   getParentRoute: () => rootRouteImport,
 } as any)
 const OurImpactRoute = OurImpactRouteImport.update({
@@ -147,6 +153,7 @@ export interface FileRoutesByFullPath {
   '/contact': typeof ContactRoute
   '/cookie-policy': typeof CookiePolicyRoute
   '/mcp': typeof McpRoute
+  '/order-status': typeof OrderStatusRoute
   '/our-impact': typeof OurImpactRoute
   '/our-work': typeof OurWorkRoute
   '/payment-security': typeof PaymentSecurityRoute
@@ -170,6 +177,7 @@ export interface FileRoutesByTo {
   '/contact': typeof ContactRoute
   '/cookie-policy': typeof CookiePolicyRoute
   '/mcp': typeof McpRoute
+  '/order-status': typeof OrderStatusRoute
   '/our-impact': typeof OurImpactRoute
   '/our-work': typeof OurWorkRoute
   '/payment-security': typeof PaymentSecurityRoute
@@ -194,6 +202,7 @@ export interface FileRoutesById {
   '/contact': typeof ContactRoute
   '/cookie-policy': typeof CookiePolicyRoute
   '/mcp': typeof McpRoute
+  '/order-status': typeof OrderStatusRoute
   '/our-impact': typeof OurImpactRoute
   '/our-work': typeof OurWorkRoute
   '/payment-security': typeof PaymentSecurityRoute
@@ -219,6 +228,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/cookie-policy'
     | '/mcp'
+    | '/order-status'
     | '/our-impact'
     | '/our-work'
     | '/payment-security'
@@ -242,6 +252,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/cookie-policy'
     | '/mcp'
+    | '/order-status'
     | '/our-impact'
     | '/our-work'
     | '/payment-security'
@@ -265,6 +276,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/cookie-policy'
     | '/mcp'
+    | '/order-status'
     | '/our-impact'
     | '/our-work'
     | '/payment-security'
@@ -289,6 +301,7 @@ export interface RootRouteChildren {
   ContactRoute: typeof ContactRoute
   CookiePolicyRoute: typeof CookiePolicyRoute
   McpRoute: typeof McpRoute
+  OrderStatusRoute: typeof OrderStatusRoute
   OurImpactRoute: typeof OurImpactRoute
   OurWorkRoute: typeof OurWorkRoute
   PaymentSecurityRoute: typeof PaymentSecurityRoute
@@ -348,6 +361,13 @@ declare module '@tanstack/react-router' {
       path: '/mcp'
       fullPath: '/mcp'
       preLoaderRoute: typeof McpRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/order-status': {
+      id: '/order-status'
+      path: '/order-status'
+      fullPath: '/order-status'
+      preLoaderRoute: typeof OrderStatusRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/our-impact': {
@@ -465,6 +485,7 @@ const rootRouteChildren: RootRouteChildren = {
   ContactRoute: ContactRoute,
   CookiePolicyRoute: CookiePolicyRoute,
   McpRoute: McpRoute,
+  OrderStatusRoute: OrderStatusRoute,
   OurImpactRoute: OurImpactRoute,
   OurWorkRoute: OurWorkRoute,
   PaymentSecurityRoute: PaymentSecurityRoute,
